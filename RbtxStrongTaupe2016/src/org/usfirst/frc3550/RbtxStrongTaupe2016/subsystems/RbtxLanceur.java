@@ -48,5 +48,18 @@ public class RbtxLanceur extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void RbtxLanceurActifmax(){
+    	m_lanceur.set(0.9);
+    }
+    
+    public void RbtxLanceurActifmin(){
+    	m_lanceur.set(0.75);
+        
+    }
+    
+    public void RbtxLanceurStop(){
+    	m_lanceur.set(0);
+    }
 }
 

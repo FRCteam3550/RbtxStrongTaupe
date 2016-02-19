@@ -47,5 +47,13 @@ public class RbtxRamasseur extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void RbtxRamasseurActif(){
+    	m_ramasseur.set(1);
+    }
+    
+    public void RbtxRamasseurStop(){
+    	m_ramasseur.set(0);
+    }
 }
 
