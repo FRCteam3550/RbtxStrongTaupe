@@ -53,5 +53,18 @@ public class RbtxBras extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void RbtxBrasStop(){
+    	m_bras.set(0);
+    }
+    
+    public void RbtxBrasHaut(){
+    	m_bras.set(1);
+    }
+    
+    public void RbtxBrasBas(){
+    	m_bras.set(-1);
+    }
+    
 }
 
