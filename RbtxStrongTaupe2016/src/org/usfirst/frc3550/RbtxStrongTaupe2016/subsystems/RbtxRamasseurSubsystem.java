@@ -39,6 +39,9 @@ public class RbtxRamasseurSubsystem extends Subsystem {
     private static final double VITESSEASPIRER = 1;
     private static final double VITESSEEJECTER = 1;
     private static final double VITESSEZERO = 0;
+    
+    private static final boolean UPPERBALL_ISACTIVE = true; // !! verif type
+    
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -51,8 +54,16 @@ public class RbtxRamasseurSubsystem extends Subsystem {
     }
     
     public void aspirer() {
-    	m_moteur.set(DIRECTIONASPIRER*VITESSEASPIRER);
+    	// AJOUTER QUAND LIMITSWITCH INSTALLE
+    	//if (m_limitSwitch.get() == UPPERBALL_ISACTIVE){
+    		//stop();
+    	//}
+    	//else{
+    	    m_moteur.set(DIRECTIONASPIRER*VITESSEASPIRER);
+    	//}
     }
+    	
+    
     
     public void ejecter() {
     	m_moteur.set(DIRECTIONEJECTER*VITESSEEJECTER);

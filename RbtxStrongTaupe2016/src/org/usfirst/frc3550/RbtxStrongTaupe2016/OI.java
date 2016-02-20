@@ -67,12 +67,14 @@ public class OI {
 		Button buttonLanceurActifmax = new JoystickButton(joystickCoPilote, 6);
 		//Button buttonLanceurActifmin = new JoystickButton(joystickCoPilote, 7);
 		Button buttonRamasseurActif = new JoystickButton(joystickCoPilote, 9);
+		Button buttonRamasseurEjectActif = new JoystickButton(joystickCoPilote, 4);
 
 		buttonBrasHaut.whileHeld(new RbtxBrasHautCommand());
 		buttonBrasBas.whileHeld(new RbtxBrasBasCommand());
 		buttonLanceurActifmax.whileHeld(new RbtxLanceurCommand());
 		//buttonLanceurActifmin.whileHeld(new RbtxComLanceur());
 		buttonRamasseurActif.whileHeld(new RbtxRamasseurCommand());
+		buttonRamasseurEjectActif.whileHeld(new RbtxRamasseurEjectCommand());
 
 		// SmartDashboard Buttons
 		SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
