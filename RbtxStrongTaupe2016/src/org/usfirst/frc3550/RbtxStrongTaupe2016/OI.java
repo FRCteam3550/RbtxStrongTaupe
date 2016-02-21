@@ -94,7 +94,7 @@ public class OI {
 		SmartDashboard.putData("ArcadeDrive", new RbtxArcadeDriveCommand());
 		SmartDashboard.putData("BrasDescendre", new RbtxBrasDescendreCommand());
 		SmartDashboard.putData("BrasMonter", new RbtxBrasMonterCommand());
-		SmartDashboard.putData("RamasseurAspirer", new RbtxRamasseurAspirerCommand());
+		SmartDashboard.putData("RamasseurAspirer", new RbtxRamasseurAspirerCommand()); 
 		SmartDashboard.putData("RamasseurEjecter", new RbtxRamasseurEjecterCommand());
 		SmartDashboard.putData("Accelerateur", new RbtxAccelererCommand());
 
