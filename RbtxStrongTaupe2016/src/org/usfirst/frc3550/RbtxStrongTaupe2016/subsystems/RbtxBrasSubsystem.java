@@ -69,5 +69,13 @@ public class RbtxBrasSubsystem extends Subsystem {
     	m_moteur.set(DIRECTION_BAS*VITESSE_BAS);
     }
     
+    public boolean isTooHigh(){
+    	return  !m_brasEnHaut.get();
+    }
+    
+    public boolean isTooLow(){
+    	return m_brasEnBas.get();
+    }
+    
 }
 

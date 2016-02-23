@@ -77,8 +77,8 @@ public class OI {
 		Button buttonBrasMonter = new JoystickButton(joystickCoPilote, 5);
 		Button buttonBrasDescendre = new JoystickButton(joystickCoPilote, 3);
 
-		buttonBrasMonter.whileHeld(new RbtxBrasMonterCommand());
-		buttonBrasDescendre.whileHeld(new RbtxBrasDescendreCommand());
+		buttonBrasMonter.whenPressed(new RbtxBrasMonterCommand());
+		buttonBrasDescendre.whenPressed(new RbtxBrasDescendreCommand());
 
 		// Boutons ramasseur
 		Button buttonRamasseurAspirer = new JoystickButton(joystickCoPilote, 9);

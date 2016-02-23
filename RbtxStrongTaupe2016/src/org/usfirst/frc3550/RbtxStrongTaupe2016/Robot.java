@@ -111,7 +111,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("gamePadPiloteYaxis", Robot.oi.getgamePadPiloteY());
 		
 		SmartDashboard.putBoolean("BoutonAccelerateur", Robot.oi.joystickCoPilote.getRawButton(6));
-		SmartDashboard.putBoolean("BrasEnBas", RobotMap.brasEnBas.get());
+		SmartDashboard.putBoolean("BrasEnBas", (!RobotMap.brasEnBas.get()));
 		SmartDashboard.putBoolean("BrasEnHaut", RobotMap.brasEnHaut.get());
 		SmartDashboard.putBoolean("BallonPresent", RobotMap.BallonPresent.get());
 		
