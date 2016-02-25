@@ -38,6 +38,7 @@ public class RobotMap {
     public static SpeedController moteurDeplacementArriereDroite;
     public static SpeedController moteurDeplacementArriereGauche;
     public static RobotDrive drive;
+    public static RobotDrive myDrive;
     public static Encoder encodeurDeplacementDroit;
     public static Encoder encodeurDeplacementGauche;
     
@@ -83,21 +84,35 @@ public class RobotMap {
         LiveWindow.addActuator("RbtxBrasSubsystem", "m_moteur", (Talon) moteurBras);
         
         drive = new RobotDrive(moteurDeplacementAvantGauche, moteurDeplacementArriereGauche,
-              moteurDeplacementAvantDroite, moteurDeplacementArriereDroite);
+              moteurDeplacementAvantDroite, moteurDeplacementArriereDroite); 
+        
+   
         
         drive.setSafetyEnabled(true);
         drive.setExpiration(0.1);
         drive.setSensitivity(0.5);
         drive.setMaxOutput(1.0);
+        
+        
+        
+       
 
+     // Circumference in ft = 4in/12(in/ft)*PI
+     			//left_encoder.setDistancePerPulse((4.0/12.0*Math.PI) / 360.0);
+        
+        
+        
+        
         encodeurDeplacementDroit = new Encoder(4, 5, false, EncodingType.k4X);
         LiveWindow.addSensor("RbtxDeplacementSubsystem", "m_EncodeurDroit", encodeurDeplacementDroit);
-        encodeurDeplacementDroit.setDistancePerPulse(Math.PI*RADIUS_ROUES/490.0);
+       // encodeurDeplacementDroit.setDistancePerPulse(Math.PI*RADIUS_ROUES/490.0);
+        encodeurDeplacementDroit.setDistancePerPulse(((3.20/12.0*Math.PI)*0.5) / 360.0);
+        
         encodeurDeplacementDroit.setPIDSourceType(PIDSourceType.kRate);
         
         encodeurDeplacementGauche = new Encoder(7, 8, false, EncodingType.k4X);
         LiveWindow.addSensor("RbtxDeplacementSubsystem", "m_EncodeurGauche", encodeurDeplacementGauche);
-        encodeurDeplacementGauche.setDistancePerPulse(1.0);
+        encodeurDeplacementGauche.setDistancePerPulse(((3.20/12.0*Math.PI)*0.5)/ 360.0);
         encodeurDeplacementGauche.setPIDSourceType(PIDSourceType.kRate);
         
         encodeurBras = new Encoder(2, 3, false, EncodingType.k4X);

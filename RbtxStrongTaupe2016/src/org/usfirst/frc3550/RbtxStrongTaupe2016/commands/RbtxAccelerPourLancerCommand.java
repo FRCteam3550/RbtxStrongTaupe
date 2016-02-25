@@ -46,11 +46,11 @@ public class RbtxAccelerPourLancerCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Boolean  AccelerateurPret = false;
-    	SmartDashboard.putBoolean("Accelerateur Pret", AccelerateurPret);
+    	boolean  accelerateurPret = false;
+    	SmartDashboard.putBoolean("Accelerateur Pret", accelerateurPret);
     	Robot.accelerateur.accelererVitesseMaximale();
-    	AccelerateurPret = (Robot.accelerateur.accelererateurPret() == true);
-    	SmartDashboard.putBoolean("Accelerateur Pret", AccelerateurPret);
+    	accelerateurPret = (Robot.accelerateur.accelererateurPret() == true);
+    	SmartDashboard.putBoolean("Accelerateur Pret", accelerateurPret);
     	
     }
 

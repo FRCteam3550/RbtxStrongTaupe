@@ -52,12 +52,12 @@ public class RbtxBrasDescendreCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.bras.stop();
+    	Robot.bras.compenserGravitation();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    	Robot.bras.stop();
     }
 }
