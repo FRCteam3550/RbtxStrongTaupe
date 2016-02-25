@@ -78,8 +78,8 @@ public class Robot extends IterativeRobot {
 
 		//autonomousCommand = new AutonomousCommand();
 		
-    	autoSelecteur.addDefault("Bras en bas", new RbtxBrasDescendreCommand());
-        autoSelecteur.addObject("Bras en haut", new RbtxBrasMonterCommand());
+    	autoSelecteur.addDefault("->Robotronix Ne fais rien", new RbtxNeFaitRienCommand());
+        autoSelecteur.addObject("->Bras en haut", new RbtxBrasMonterCommand());
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         
         axisCamera = new AxisCamera("axis-camera.local");
