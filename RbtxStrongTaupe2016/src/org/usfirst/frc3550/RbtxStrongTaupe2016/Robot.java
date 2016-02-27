@@ -44,9 +44,7 @@ public class Robot extends IterativeRobot {
 	public static RbtxAccelerateurSubsystem accelerateur;
 	
 	SendableChooser autoSelecteur;
-	
     CameraServer  usbCamera;
-	
 	Image frame;
     AxisCamera axisCamera;
 	
@@ -78,7 +76,7 @@ public class Robot extends IterativeRobot {
 
 		//autonomousCommand = new AutonomousCommand();
 		
-    	autoSelecteur.addDefault("->Robotronix Ne fais rien", new RbtxNeFaitRienCommand());
+    	//autoSelecteur.addDefault("->Robotronix Ne fais rien", new RbtxNeFaitRienCommand());
         autoSelecteur.addObject("->Bras en haut", new RbtxBrasMonterCommand());
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         
