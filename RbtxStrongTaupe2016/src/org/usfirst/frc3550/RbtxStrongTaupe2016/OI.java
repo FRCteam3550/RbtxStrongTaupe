@@ -69,6 +69,12 @@ public class OI {
 		Button buttonDrive = new JoystickButton(gamePadPilote, 5);
 		buttonDrive.whenPressed(new RbtxArcadeDriveCommand());
 		
+		Button buttonSetpoint1 = new JoystickButton(gamePadPilote, 3);
+		buttonSetpoint1.whenPressed(new RbtxDriveFixedDistanceCommand(108));
+		
+		Button buttonSetpoint2 = new JoystickButton(gamePadPilote, 4);
+		buttonSetpoint2.whenPressed(new RbtxDriveFixedDistanceCommand(150));
+		
 		
 		// Copilote
 		joystickCoPilote = new Joystick(1);

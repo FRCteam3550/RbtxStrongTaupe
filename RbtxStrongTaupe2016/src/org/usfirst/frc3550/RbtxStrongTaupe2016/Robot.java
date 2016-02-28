@@ -156,10 +156,14 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Encodeur Deplacement Droit: ", RobotMap.encodeurDeplacementDroit.getDistance());
 		SmartDashboard.putNumber("Encodeur Deplacement Gauche: ", RobotMap.encodeurDeplacementGauche.getDistance());
 		
+		SmartDashboard.putNumber("Deplacement PID position", (Robot.deplacement.getPosition()/SONAR_VOLTAGE2DISTANCE)*2.54);
+		
 		SmartDashboard.putNumber("Forward Sonar (voltage): ",     RobotMap.forwardSonar.getVoltage());
 		SmartDashboard.putNumber("Forward Sonar (value): ",       RobotMap.forwardSonar.getValue());
 		SmartDashboard.putNumber("Forward Sonar (avg voltage): ", RobotMap.forwardSonar.getAverageVoltage());
-		//SmartDashboard.putNumber("Forward Sonar: (cm)",       RobotMap.forwardSonar.getVoltage()*SONAR_VOLTAGE2DISTANCE*2.54);
+		SmartDashboard.putNumber("Forward Sonar: (cm)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*2.54);
+		SmartDashboard.putNumber("Forward Sonar: (ft)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*0.0833);
+		
 		
 		double angle = RobotMap.gyro.getAngle();
 		double Kp = 0.03;
