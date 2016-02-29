@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc3550.RbtxStrongTaupe2016.OI;
 import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
@@ -26,9 +27,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	
 	
 	
-    private static final double Kp = 0.002;
-    private static final double Ki = 0.0;
-    private static final double Kd = 0.0;
+    private static final double Kp = 1.98; // 2.35 3
+    private static final double Ki = 0.00583;  //0.01
+    private static final double Kd = 0.00008; 
     
     private RobotDrive m_drive = RobotMap.drive;
     private AnalogInput m_rangefinder = RobotMap.forwardSonar;
@@ -55,21 +56,22 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    	return m_rangefinder.getAverageVoltage();
+    	 return m_rangefinder.getVoltage();
     }
     
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	   tankDrive(output, output);
+    	SmartDashboard.putNumber("Current PIDOutput", output);
+    	 driveStraight(output);
     }
     
-    public void tankDrive(double left, double right){
-    	RobotMap.moteurDeplacementAvantGauche.setInverted(false);
-    	RobotMap.moteurDeplacementArriereGauche.setInverted(false);
-    	RobotMap.moteurDeplacementAvantDroite.setInverted(false);
-    	RobotMap.moteurDeplacementArriereDroite.setInverted(false);
-    	m_drive.tankDrive(left, right);
+    public void driveStraight(double speed){
+    	RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+    	RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+    	RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+    	RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+    	m_drive.drive(speed, 0);
     }
     
     public void stop() {

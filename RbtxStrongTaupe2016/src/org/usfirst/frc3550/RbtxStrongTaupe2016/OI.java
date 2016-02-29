@@ -70,10 +70,10 @@ public class OI {
 		buttonDrive.whenPressed(new RbtxArcadeDriveCommand());
 		
 		Button buttonSetpoint1 = new JoystickButton(gamePadPilote, 3);
-		buttonSetpoint1.whenPressed(new RbtxDriveFixedDistanceCommand(108));
-		
+		buttonSetpoint1.whenPressed(new RbtxDriveFixedDistanceCommand(0.6)); //0.417 correspond au voltage lue
+		                                                                     // a 3.36 ft de la tour
 		Button buttonSetpoint2 = new JoystickButton(gamePadPilote, 4);
-		buttonSetpoint2.whenPressed(new RbtxDriveFixedDistanceCommand(150));
+		buttonSetpoint2.whenPressed(new RbtxDriveFixedDistanceCommand(0.8));
 		
 		
 		// Copilote

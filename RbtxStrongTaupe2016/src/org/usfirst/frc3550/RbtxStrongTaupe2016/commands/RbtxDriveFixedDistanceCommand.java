@@ -14,7 +14,7 @@ public class RbtxDriveFixedDistanceCommand extends Command {
 	private static final double SONAR_SUPPLYVOLTAGE = 5.0;
 	private static final double SONAR_COUNTERRESOLUTION = 512.0;
 	private static final double SONAR_VOLTAGE2DISTANCE = SONAR_SUPPLYVOLTAGE / SONAR_COUNTERRESOLUTION;
-	double setpoint = 0;
+	double setpoint;
 	
 
     public RbtxDriveFixedDistanceCommand(double setpoint) {
@@ -32,13 +32,16 @@ public class RbtxDriveFixedDistanceCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putNumber("position lue: ", Robot.deplacement.getPosition());
+    	SmartDashboard.putNumber("setpoint: ", setpoint);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-    	SmartDashboard.putNumber("difference : ", Math.abs(((Robot.deplacement.getPosition()/SONAR_VOLTAGE2DISTANCE)*2.54)-setpoint));
-        return Math.abs(((Robot.deplacement.getPosition()/SONAR_VOLTAGE2DISTANCE)*2.54)-setpoint) < 0.2;
+    	
+    	SmartDashboard.putNumber("difference : ", Math.abs(Robot.deplacement.getPosition()-setpoint));
+        return Math.abs(Robot.deplacement.getPosition()-setpoint) < 0.02;
     }
 
     // Called once after isFinished returns true
