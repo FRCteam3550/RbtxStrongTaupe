@@ -13,6 +13,7 @@ package org.usfirst.frc3550.RbtxStrongTaupe2016.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
+import org.usfirst.frc3550.RbtxStrongTaupe2016.RobotMap;
 
 /**
  *

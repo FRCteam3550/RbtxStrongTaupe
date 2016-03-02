@@ -1,6 +1,7 @@
 package org.usfirst.frc3550.RbtxStrongTaupe2016.commands;
 
 import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
+import org.usfirst.frc3550.RbtxStrongTaupe2016.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 

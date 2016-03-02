@@ -63,17 +63,17 @@ public class OI {
 		// Pilote
 		gamePadPilote = new Joystick(0);
 		
-		Button buttonInverseDrive = new JoystickButton(gamePadPilote, 1);
+		Button buttonInverseDrive = new JoystickButton(gamePadPilote, 3);
 		buttonInverseDrive.whenPressed(new RbtxArcadeDriveInversedCommand());
 		
-		Button buttonDrive = new JoystickButton(gamePadPilote, 5);
+		Button buttonDrive = new JoystickButton(gamePadPilote, 4);
 		buttonDrive.whenPressed(new RbtxArcadeDriveCommand());
 		
-		Button buttonSetpoint1 = new JoystickButton(gamePadPilote, 3);
-		buttonSetpoint1.whenPressed(new RbtxDriveFixedDistanceCommand(0.6)); //0.417 correspond au voltage lue
+		Button buttonVaDevantTour = new JoystickButton(gamePadPilote, 5);
+		buttonVaDevantTour.whenPressed(new RbtxVaPositionDeTirCommand(Robot.deplacement.TOUR)); //0.417 correspond au voltage lue
 		                                                                     // a 3.36 ft de la tour
-		Button buttonSetpoint2 = new JoystickButton(gamePadPilote, 4);
-		buttonSetpoint2.whenPressed(new RbtxDriveFixedDistanceCommand(0.8));
+		Button buttonVaDevantTourTest = new JoystickButton(gamePadPilote, 6);
+		buttonVaDevantTourTest.whenPressed(new RbtxVaPositionDeTirCommand(Robot.deplacement.TOUR2));
 		
 		
 		// Copilote
@@ -125,7 +125,7 @@ public class OI {
 
 
 	public double getgamePadPiloteX() {
-		return gamePadPilote.getRawAxis(0);
+		return gamePadPilote.getRawAxis(2);
 	}
 	
 	public double getgamePadPiloteY() {

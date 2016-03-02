@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class RbtxDriveFixedDistanceCommand extends Command {
+public class RbtxVaPositionDeTirCommand extends Command {
 	
 	private static final double SONAR_SUPPLYVOLTAGE = 5.0;
 	private static final double SONAR_COUNTERRESOLUTION = 512.0;
@@ -17,7 +17,7 @@ public class RbtxDriveFixedDistanceCommand extends Command {
 	double setpoint;
 	
 
-    public RbtxDriveFixedDistanceCommand(double setpoint) {
+    public RbtxVaPositionDeTirCommand(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.deplacement);
