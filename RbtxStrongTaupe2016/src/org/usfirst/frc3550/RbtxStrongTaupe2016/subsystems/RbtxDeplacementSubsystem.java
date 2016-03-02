@@ -21,9 +21,10 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	private static final double Ki = 0.00583; // 0.01
 	private static final double Kd = 0.00008;
 
-	public static final double TOUR = 0.3;
+	public static final double TOUR = 0.25;
 	public static final double TOUR2 = 0.8;
 
+	private double currentVoltage;
 	private RobotDrive m_drive = RobotMap.drive;
 	private AnalogInput m_rangefinder = RobotMap.forwardSonar;
 
@@ -56,6 +57,8 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		// Return your input value for the PID loop
 		// e.g. a sensor, like a potentiometer:
 		// yourPot.getAverageVoltage() / kYourMaxVoltage;
+		currentVoltage = m_rangefinder.getVoltage();
+		
 		return m_rangefinder.getVoltage();
 	}
 
@@ -63,7 +66,14 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		// Use output to drive your system, like a motor
 		// e.g. yourMotor.set(output);
 		SmartDashboard.putNumber("Current PIDOutput", output);
-		driveStraight(output);
+		
+		double speed = output;
+		if (speed > 0.8)
+			speed = 0.8;
+		if (currentVoltage <= TOUR+0.04)
+			speed = 0.5;
+		
+		driveStraight(speed);
 	}
 
 	public void driveStraight(double speed) {
@@ -71,11 +81,6 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
 		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
 		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
-		
-		if (speed > 0.4) {
-			speed = 0.4;
-		}
-			
 		m_drive.drive(speed, 0);
 	}
 
