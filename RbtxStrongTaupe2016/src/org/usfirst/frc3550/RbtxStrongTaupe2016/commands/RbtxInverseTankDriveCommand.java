@@ -1,16 +1,15 @@
 package org.usfirst.frc3550.RbtxStrongTaupe2016.commands;
 
 import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
-import org.usfirst.frc3550.RbtxStrongTaupe2016.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RbtxArcadeDriveInversedCommand extends Command {
+public class RbtxInverseTankDriveCommand extends Command {
 
-    public RbtxArcadeDriveInversedCommand() {
+    public RbtxInverseTankDriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.deplacement);
@@ -22,7 +21,7 @@ public class RbtxArcadeDriveInversedCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.deplacement.inverseDrive(Robot.oi.getgamePadPiloteY(),Robot.oi.getgamePadPiloteX());
+    	 Robot.deplacement.inverseTankDrive(Robot.oi.getgamePadPiloteYLeft(), Robot.oi.getgamePadPiloteYRight());
     }
 
     // Make this return true when this Command no longer needs to run execute()

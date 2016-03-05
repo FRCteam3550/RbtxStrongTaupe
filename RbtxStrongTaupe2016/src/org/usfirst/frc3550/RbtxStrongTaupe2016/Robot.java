@@ -90,7 +90,9 @@ public class Robot extends IterativeRobot {
 		autoSelecteur = new SendableChooser();
         //		
     	autoSelecteur.addDefault("->Robotronix Ne fais rien", new RbtxNeFaitRienCommand());
-        autoSelecteur.addObject("->Bras en haut", new RbtxBrasMonterCommand());
+        autoSelecteur.addObject("->En avant", new RbtxAutoForwardCommand());
+        autoSelecteur.addObject("->Reculer", new RbtxReverseAutoCommand());
+        autoSelecteur.addObject("->Composer", new RbtxAutoCompoundCommand());
         //autoSelecteur.addObject("", new Command()); // Template
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         

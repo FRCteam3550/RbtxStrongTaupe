@@ -63,11 +63,29 @@ public class OI {
 		// Pilote
 		gamePadPilote = new Joystick(0);
 		
-		Button buttonInverseDrive = new JoystickButton(gamePadPilote, 3);
-		buttonInverseDrive.whenPressed(new RbtxArcadeDriveInversedCommand());
+		//Button buttonInverseDrive = new JoystickButton(gamePadPilote, 4);
+		//buttonInverseDrive.whenPressed(new RbtxArcadeDriveInversedCommand());
 		
-		Button buttonDrive = new JoystickButton(gamePadPilote, 4);
-		buttonDrive.whenPressed(new RbtxArcadeDriveCommand());
+		//Button buttonDrive = new JoystickButton(gamePadPilote, 2);
+		//buttonDrive.whenPressed(new RbtxArcadeDriveCommand());
+		
+		//Button buttonSlowDrive = new JoystickButton(gamePadPilote, 3);
+		//buttonSlowDrive.whenPressed(new RbtxSlowDriveCommand());
+		
+		//Button buttonInverseSlowDrive = new JoystickButton(gamePadPilote, 1);
+		//buttonInverseSlowDrive.whenPressed(new RbtxSlowDriveInverseCommand());
+		
+		Button buttonInverseDrive = new JoystickButton(gamePadPilote, 4);
+		buttonInverseDrive.whenPressed(new RbtxInverseTankDriveCommand());
+		
+		Button buttonDrive = new JoystickButton(gamePadPilote, 2);
+		buttonDrive.whenPressed(new RbtxTankDriveCommand());
+		
+		Button buttonInverseSlowTankDrive = new JoystickButton(gamePadPilote, 1);
+		buttonInverseSlowTankDrive.whenPressed(new RbtxInverseSlowTankDriveCommand());
+				
+		Button buttonSlowTankDrive = new JoystickButton(gamePadPilote, 3);
+		buttonSlowTankDrive.whenPressed(new RbtxSlowTankDriveCommand());
 		
 		Button buttonVaDevantTour = new JoystickButton(gamePadPilote, 5);
 		//buttonVaDevantTour.whenPressed(new RbtxVaPositionDeTirCommand(Robot.deplacement.TOUR)); //0.417 correspond au voltage lue
@@ -75,8 +93,8 @@ public class OI {
 		Button buttonVaDevantTourTest = new JoystickButton(gamePadPilote, 6);//Nouvelle version du PID
 		buttonVaDevantTourTest.whenPressed(new RbtxgoStraightToTowerCommand(Robot.deplacement.TOUR));
 		
-		Button buttonGyroTest = new JoystickButton(gamePadPilote, 7);//Nouvelle version du PID
-		buttonGyroTest.whileHeld(new RbtxGyroDriveCommand());
+		Button buttonGyroTest = new JoystickButton(gamePadPilote, 3);//Ne marche pas encore
+		//buttonGyroTest.whileHeld(new RbtxGyroDriveCommand());
 		
 		
 		// Copilote
@@ -108,7 +126,8 @@ public class OI {
 		
 		// Bouton pour lancer
 		Button buttonLancer = new JoystickButton(joystickCoPilote, 1);
-		buttonLancer.whenPressed(new RbtxLancerCommand());
+		//buttonLancer.whenPressed(new RbtxLancerCommand());
+		buttonLancer.whenPressed(new RbtxAutoForwardCommand());
 		Button buttonArretLancer = new JoystickButton(joystickCoPilote, 7);
 		buttonArretLancer.whenPressed(new RbtxArreterAccelerateurCommand());
 
@@ -141,6 +160,14 @@ public class OI {
 
 	public Joystick getJoystickCoPilote() {
 		return joystickCoPilote;
+	}
+	
+	public double getgamePadPiloteYLeft() {
+		return gamePadPilote.getRawAxis(1);
+	}
+	
+	public double getgamePadPiloteYRight() {
+		return gamePadPilote.getRawAxis(3);
 	}
 
 }

@@ -28,7 +28,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 
 	public static final double TOUR = 0.25;
 	public static final double TOUR2 = 0.8;
-
+	public static final double SLOWSPEED = 0.75;
+	public static final boolean SENSITIVITY = true;
+	
 	private double currentHeading;
 	
 	// Subsystem devices
@@ -51,8 +53,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		setDefaultCommand(new RbtxArcadeDriveCommand());
+		//setDefaultCommand(new RbtxArcadeDriveCommand());
 		//setDefaultCommand(new RbtxGyroDriveCommand());
+		setDefaultCommand(new RbtxTankDriveCommand());
 	}
 
 	/**
@@ -99,6 +102,7 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		m_drive.drive(speed, 0);
 	}
 	
+	
 	public void gyroDrive(double rotateValue) {
 		double moveValue = Robot.oi.getgamePadPiloteY();
 		//double rotateValue = Robot.oi.getgamePadPiloteX();
@@ -117,9 +121,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		m_drive.drive(0, 0);
 	}
 
-	public void drive(Joystick stick) {
-		double moveValue = Robot.oi.getgamePadPiloteY();
-		double rotateValue = Robot.oi.getgamePadPiloteX();
+	public void drive(double moveValue, double rotateValue) {
+		//double moveValue = Robot.oi.getgamePadPiloteY();
+		//double rotateValue = Robot.oi.getgamePadPiloteX();
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
@@ -127,12 +131,12 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
 		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
 		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
-		m_drive.arcadeDrive(moveValue, rotateValue);
+		m_drive.arcadeDrive(moveValue, rotateValue, SENSITIVITY);
 	}
 
-	public void inverseDrive(Joystick stick) {
-		double moveValue = Robot.oi.getgamePadPiloteY();
-		double rotateValue = Robot.oi.getgamePadPiloteX();
+	public void inverseDrive(double moveValue, double rotateValue) {
+		//double moveValue = Robot.oi.getgamePadPiloteY();
+		//double rotateValue = Robot.oi.getgamePadPiloteX();
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
@@ -140,7 +144,86 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
 		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
 		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
-		m_drive.arcadeDrive(moveValue, -1 * rotateValue);
+		m_drive.arcadeDrive(moveValue, -1 * rotateValue, SENSITIVITY);
 	}
-
+	
+	public void driveSlow(double moveValue, double rotateValue) {
+		//double moveValue = Robot.oi.getgamePadPiloteY();
+		//double rotateValue = Robot.oi.getgamePadPiloteX();
+		
+		// Configure the RobotDrive to reflect the fact that all our motors are
+		// wired backwards and our drivers sensitivity preferences.
+		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+		m_drive.arcadeDrive(SLOWSPEED*moveValue, SLOWSPEED*rotateValue, SENSITIVITY);
+	}
+	
+	public void inverseDriveSlow(double moveValue, double rotateValue) {
+		//double moveValue = Robot.oi.getgamePadPiloteY();
+		//double rotateValue = Robot.oi.getgamePadPiloteX();
+		
+		// Configure the RobotDrive to reflect the fact that all our motors are
+		// wired backwards and our drivers sensitivity preferences.
+		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
+		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
+		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
+		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+		m_drive.arcadeDrive(SLOWSPEED*moveValue, -1*SLOWSPEED*rotateValue, SENSITIVITY);
+	}
+	
+	public void driveTank(double leftStick, double rightStick) {
+		//leftStick = Robot.oi.getgamePadPiloteYLeft();
+		//rightStick = Robot.oi.getgamePadPiloteYRight();
+		
+		// Configure the RobotDrive to reflect the fact that all our motors are
+		// wired backwards and our drivers sensitivity preferences.
+		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+		//m_drive.arcadeDrive(SLOWSPEED*moveValue, SLOWSPEED*rotateValue, SENSITIVITY);
+		m_drive.tankDrive(leftStick, rightStick, SENSITIVITY);
+	}
+	
+	public void inverseTankDrive(double leftStick, double rightStick) {
+		//leftStick = Robot.oi.getgamePadPiloteYLeft();
+		//rightStick = Robot.oi.getgamePadPiloteYRight();
+		
+		// Configure the RobotDrive to reflect the fact that all our motors are
+		// wired backwards and our drivers sensitivity preferences.
+		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
+		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
+		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
+		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+		m_drive.tankDrive(rightStick, leftStick, SENSITIVITY);
+	}
+	
+	public void SlowTankDrive(double leftStick, double rightStick) {
+		//leftStick = Robot.oi.getgamePadPiloteYLeft();
+		//rightStick = Robot.oi.getgamePadPiloteYRight();
+		
+		// Configure the RobotDrive to reflect the fact that all our motors are
+		// wired backwards and our drivers sensitivity preferences.
+		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+		//m_drive.arcadeDrive(SLOWSPEED*moveValue, SLOWSPEED*rotateValue, SENSITIVITY);
+		m_drive.tankDrive(leftStick*SLOWSPEED, rightStick*SLOWSPEED, SENSITIVITY);
+	}
+	
+	public void inverseSlowTankDrive(double leftStick, double rightStick) {
+		//leftStick = Robot.oi.getgamePadPiloteYLeft();
+		//rightStick = Robot.oi.getgamePadPiloteYRight();
+		
+		// Configure the RobotDrive to reflect the fact that all our motors are
+		// wired backwards and our drivers sensitivity preferences.
+		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
+		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
+		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
+		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+		m_drive.tankDrive(rightStick*SLOWSPEED, leftStick*SLOWSPEED, SENSITIVITY);
+	}
 }
