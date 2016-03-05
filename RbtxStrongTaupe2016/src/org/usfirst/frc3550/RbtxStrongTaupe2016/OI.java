@@ -70,10 +70,13 @@ public class OI {
 		buttonDrive.whenPressed(new RbtxArcadeDriveCommand());
 		
 		Button buttonVaDevantTour = new JoystickButton(gamePadPilote, 5);
-		buttonVaDevantTour.whenPressed(new RbtxVaPositionDeTirCommand(Robot.deplacement.TOUR)); //0.417 correspond au voltage lue
+		//buttonVaDevantTour.whenPressed(new RbtxVaPositionDeTirCommand(Robot.deplacement.TOUR)); //0.417 correspond au voltage lue
 		                                                                     // a 3.36 ft de la tour
-		Button buttonVaDevantTourTest = new JoystickButton(gamePadPilote, 6);
-		buttonVaDevantTourTest.whenPressed(new RbtxVaPositionDeTirCommand(Robot.deplacement.TOUR2));
+		Button buttonVaDevantTourTest = new JoystickButton(gamePadPilote, 6);//Nouvelle version du PID
+		buttonVaDevantTourTest.whenPressed(new RbtxgoStraightToTowerCommand(Robot.deplacement.TOUR));
+		
+		Button buttonGyroTest = new JoystickButton(gamePadPilote, 7);//Nouvelle version du PID
+		buttonGyroTest.whileHeld(new RbtxGyroDriveCommand());
 		
 		
 		// Copilote
