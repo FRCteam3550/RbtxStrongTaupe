@@ -150,20 +150,8 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		log(); //Template a developper voir plus bas
 		// cameraToggle();
-		SmartDashboard.putBoolean("bouton1", Robot.oi.getGamePadPilote().getRawButton(1));
-		SmartDashboard.putBoolean("bouton2", Robot.oi.getGamePadPilote().getRawButton(2));
-		SmartDashboard.putBoolean("bouton3", Robot.oi.getGamePadPilote().getRawButton(3));
-		SmartDashboard.putBoolean("bouton4", Robot.oi.getGamePadPilote().getRawButton(4));
-		SmartDashboard.putBoolean("bouton5", Robot.oi.getGamePadPilote().getRawButton(5));
-		SmartDashboard.putBoolean("bouton6", Robot.oi.getGamePadPilote().getRawButton(6));
-		SmartDashboard.putBoolean("bouton6", Robot.oi.getGamePadPilote().getRawButton(7));
-		SmartDashboard.putBoolean("bouton7", Robot.oi.getGamePadPilote().getRawButton(8));
-		SmartDashboard.putBoolean("bouton8", Robot.oi.getGamePadPilote().getRawButton(9));
+		Robot.oi.log();
 		
-		
-		
-		
-           
 		SmartDashboard.putNumber("gamePadPiloteXaxis: ", Robot.oi.getgamePadPiloteX());
 		SmartDashboard.putNumber("gamePadPiloteYaxis: ", Robot.oi.getgamePadPiloteY());
 		

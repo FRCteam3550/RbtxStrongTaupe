@@ -5,7 +5,8 @@ import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * This command drives the robot over a given distance with simple proportional
+ * control This command will drive a given distance limiting to a maximum speed.
  */
 public class RbtxAutoForwardCommand extends Command {
 

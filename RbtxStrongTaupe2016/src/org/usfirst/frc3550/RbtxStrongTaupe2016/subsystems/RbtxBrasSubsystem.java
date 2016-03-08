@@ -24,7 +24,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 /**
- *
+ * The RbtxBrasSubsystem incorporates the sensors and actuators attached to
+ * the robots arm. These include one motor, one encoder and two limit Switches
  */
 public class RbtxBrasSubsystem extends Subsystem {
 
@@ -58,40 +59,75 @@ public class RbtxBrasSubsystem extends Subsystem {
          setDefaultCommand(new RbtxBrasManuelleCommand());
     }
     
+    /**
+	 * La methode stop permet d immobiliser le bras.
+	 * La vitesse du moteur est nulle.
+	 * 
+	 * @param Aucun argument
+	 */
     public void stop() {
     	m_moteur.set(VITESSE_ZERO);
     }
     
+    /**
+   	 * La methode monter permet de monter le bras.
+   	 * La vitesse est predefinie.
+   	 * 
+   	 * @param Aucun argument
+   	 */
     public void monter() {
     	m_moteur.set(DIRECTION_HAUT*VITESSE_HAUT);
     }
     
-    public void compenserGravitation() {
+    /**
+   	 * La methode compenserLaGravitation permet d adoucir la descente du bras lors d un arret en position verticale.
+   	 *La vitesse est predefinie
+   	 *
+   	 * @param Aucun argument
+   	 */
+    public void compenserLaGravitation() {
     	m_moteur.set(DIRECTION_HAUT*VITESSE_ANTI_g);
     }
     
+    /**
+   	 * La methode descendre permet de faire descendre le bras
+   	 * La vitesse est predefinie
+   	 * 
+   	 * @param Aucun argument
+   	 */
     public void descendre() {
     	m_moteur.set(DIRECTION_BAS*VITESSE_BAS);
     }
     
+    /**
+   	 * La methode manipulerManuel permet d operer le bras a l aide de joystick. Elle a ete demandee par Mike.
+   	 * 
+   	 * @param VITESSE_From_AXIS dans lintervalle [-1.0..1.0]
+   	 */
     public void manipulerManuel(double VITESSE_From_AXIS) {
     	m_moteur.set(VITESSE_From_AXIS);
     }
     
-    
+    /**
+	 * @return Whether or not the arm is at its highest position.
+	 */
     public boolean isTooHigh(){
     	return  !m_brasEnHaut.get();
     }
     
+    /**
+   	 * @return Whether or not the arm is at its lowest position.
+   	 */
     public boolean isTooLow(){
     	return m_brasEnBas.get();
     }
     
+    /**
+   	 * @return Whether or not the arm is at its lowest position or its highest position.
+   	 */
     public boolean reachedEnd(){
     	return ((!m_brasEnHaut.get())||( m_brasEnBas.get()));
-    }
-    
-    
+    }   
        
 }
 

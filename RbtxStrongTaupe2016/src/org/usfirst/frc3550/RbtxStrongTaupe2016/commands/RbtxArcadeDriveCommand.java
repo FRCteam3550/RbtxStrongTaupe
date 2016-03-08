@@ -16,7 +16,8 @@ import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
 import org.usfirst.frc3550.RbtxStrongTaupe2016.RobotMap;
 
 /**
- *
+ * The RbtxArcadeDriveCommand drives the robot using two axis arbitrary choose from the gamePadPilote
+ * 
  */
 public class RbtxArcadeDriveCommand extends Command {
 

@@ -17,7 +17,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
 
 /**
- *
+ * La commande RbtxAccelerPourLancerCommand permet de mettre l accelerateur a une vitesse optimale
+ * Lorsque cette vitesse est atteinte indicateur lumineux est active sur le dashboard
+ * L operateur peut alors activer la gachette
  */
 public class RbtxAccelerPourLancerCommand extends Command {
 
