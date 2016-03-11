@@ -31,9 +31,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
     //final double                   pGain   = .009; //gain proportionnel du gyro
 	 //gyro calibration constant, may need to be adjusted; 
     //gyro value of 360 is set to correspond to one full revolution
-    final double voltsPerDegreePerSecond = .0090; 
+    final double voltsPerDegreePerSecond = .0125; //change from 0.009 to 0.0085
 
-	public static final double   TOUR      = 0.25; // sonar output voltage when the robot is at the shooting position from the tower
+	public static final double   TOUR      = 0.325; // sonar output voltage when the robot is at the shooting position from the target
 	public static final double   TOUR2     = 0.8; // for testing purpose only
 	
 	
@@ -133,6 +133,15 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	
 	public double getDistanceToTarget(){
 		   return m_rangefinder.getVoltage();	
+	}
+	
+	/**
+	 * @return The getGyroPidOutput wich is the ratevalue from the PID
+	 * This method is used in RbtxAutoDriveWithEncoderAndGyroCommand
+	 */
+	
+	public double getGyroAngle(){
+		   return m_gyro.getAngle();	
 	}
 	
 	/**

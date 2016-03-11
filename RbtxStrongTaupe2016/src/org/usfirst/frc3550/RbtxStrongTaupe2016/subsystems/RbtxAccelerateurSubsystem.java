@@ -65,6 +65,29 @@ public class RbtxAccelerateurSubsystem extends Subsystem {
 	public void preparerVitesseMinimale(){
 		m_moteur.set(VITESSE_MINIMALE);
 	}
+	
+	/**
+   	 * La methode getCurrentShooterSpeed returne la valeur actuelle de la vitesse du moteur du shooter 
+   	 * Cette methode est utilisee par la commande RbtxShooterMaxSpeedPIDCommand
+   	 * @
+   	 * @param Aucun argument
+   	 */
+       public double getCurrentShooterSpeed() {
+       	return m_moteur.get();
+       }
+       
+       /**
+      	 * La methode setCurrentShooterSpeed met la vitesse du shooter a une valeur desiree
+      	 * Cette methode est utilisee par la commande RbtxShooterMaxSpeedPIDCommand
+      	 * @
+      	 * @param ShooterPIDSpeed
+      	 */
+          public void setCurrentShooterSpeed(double ShooterPIDSpeed) {
+        	  if (ShooterPIDSpeed < 0){                  // to prevent from negative values
+        		  ShooterPIDSpeed = -ShooterPIDSpeed;
+        	  }
+          	m_moteur.set(ShooterPIDSpeed);
+          }
 
 	/**
 	 * La methode stop permet d arreter le moteur du shooter.

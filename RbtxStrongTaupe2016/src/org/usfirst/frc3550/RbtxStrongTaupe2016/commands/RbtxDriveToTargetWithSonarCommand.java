@@ -11,9 +11,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
- *
+ *This command drives the robot tower the target using a sonar
+ *It uses a local PID controller with the pidInput provided by the sonar
+ *The PID output is provided to the driveStraight method of the displacement subsystem
+ *The sonar is declared in the RbtxDeplacementSubsystem
+ *The PID setpoint is the distance (volt unit as read from the sonar) to the target
+ *The setpoint can vary depending of the actual distance (see IO file)
  */
-public class RbtxgoStraightToTowerCommand extends Command {
+public class RbtxDriveToTargetWithSonarCommand extends Command {
 	
 	private PIDController PIDSonar;
 	double setpoint;
@@ -27,7 +32,7 @@ public class RbtxgoStraightToTowerCommand extends Command {
 	
 	private double currentVoltage;
 
-    public RbtxgoStraightToTowerCommand(double setpoint) {
+    public RbtxDriveToTargetWithSonarCommand(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.deplacement);
@@ -60,7 +65,8 @@ public class RbtxgoStraightToTowerCommand extends Command {
             		if (currentVoltage <= TOUR+0.04)
             			speed = 0.5;
             		
-            		Robot.deplacement.driveStraight(speed);
+            		//Robot.deplacement.driveStraight(speed);
+            		Robot.deplacement.drive(speed,(Robot.deplacement.getGyroAngle()*.009));
                     
                 }});
     	PIDSonar.setAbsoluteTolerance(0.01);

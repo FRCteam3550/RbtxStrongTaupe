@@ -114,7 +114,7 @@ public class RobotMap {
         LiveWindow.addSensor("RbtxDeplacementSubsystem", "forwardSonar", forwardSonar);
        
         
-        gyro = new AnalogGyro(0);
+        gyro = new AnalogGyro(1); // change from analog 0 to analog 1
         
         encodeurDeplacementDroit = new Encoder(4, 5, false, EncodingType.k4X);
         LiveWindow.addSensor("RbtxDeplacementSubsystem", "m_EncodeurDroit", encodeurDeplacementDroit);
