@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
         
        // axisCamera = new AxisCamera("axis-camera.local"); A remettre a NorthBay
         usbCamera = CameraServer.getInstance();
-        usbCamera.setQuality(30);
+        usbCamera.setQuality(50); //be carefull when changing this value, 30 doesnt work
         //the camera name (ex "cam0") can be found through the roborio web interface
         usbCamera.startAutomaticCapture("cam0");
         //axisCamera.getImage(frame);

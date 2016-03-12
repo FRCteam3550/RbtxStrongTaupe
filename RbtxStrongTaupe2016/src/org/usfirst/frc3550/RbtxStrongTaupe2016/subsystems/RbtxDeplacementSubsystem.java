@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -46,6 +47,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	private AnalogGyro  m_gyro         = RobotMap.gyro;
 	private Encoder     m_leftEncoder  = RobotMap.encodeurDeplacementGauche;
 	private Encoder     m_rightEncoder = RobotMap.encodeurDeplacementDroit;
+	private Servo       m_panServo     = RobotMap.servoPan;
+	private Servo       m_TiltServo    = RobotMap.servoTilt;
+	
 	
 	
 	// Initialize your subsystem here
@@ -133,6 +137,14 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	
 	public double getDistanceToTarget(){
 		   return m_rangefinder.getVoltage();	
+	}
+	
+	/**
+	 * @return The Ultrasonic getting the distance from the target.
+	 */
+	
+	public void resetSonar(){
+		 m_rangefinder.resetAccumulator();	
 	}
 	
 	/**
