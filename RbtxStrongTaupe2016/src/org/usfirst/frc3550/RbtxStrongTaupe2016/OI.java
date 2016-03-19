@@ -62,6 +62,10 @@ public class OI {
 
 		// Pilote
 		gamePadPilote = new Joystick(0);
+		int BUTTON_X = 1;
+		int BUTTON_A = 2;
+		int BUTTON_B = 3;
+		int BUTTON_Y = 4;
 		
 		//Button buttonInverseDrive = new JoystickButton(gamePadPilote, 4);
 		//buttonInverseDrive.whenPressed(new RbtxArcadeDriveInversedCommand());
@@ -75,20 +79,20 @@ public class OI {
 		//Button buttonInverseSlowDrive = new JoystickButton(gamePadPilote, 1);
 		//buttonInverseSlowDrive.whenPressed(new RbtxSlowDriveInverseCommand());
 		
-		Button buttonInverseDrive = new JoystickButton(gamePadPilote, 4);
+		Button buttonInverseDrive = new JoystickButton(gamePadPilote, BUTTON_Y);
 		buttonInverseDrive.whenPressed(new RbtxInverseTankDriveCommand());
 		
-		Button buttonDrive = new JoystickButton(gamePadPilote, 2);
+		Button buttonDrive = new JoystickButton(gamePadPilote, BUTTON_A);
 		buttonDrive.whenPressed(new RbtxTankDriveCommand());
 		
-		Button buttonInverseSlowTankDrive = new JoystickButton(gamePadPilote, 1);
+		Button buttonInverseSlowTankDrive = new JoystickButton(gamePadPilote, BUTTON_X);
 		buttonInverseSlowTankDrive.whenPressed(new RbtxInverseSlowTankDriveCommand());
 				
-		Button buttonSlowTankDrive = new JoystickButton(gamePadPilote, 3);
+		Button buttonSlowTankDrive = new JoystickButton(gamePadPilote, BUTTON_B);
 		buttonSlowTankDrive.whenPressed(new RbtxSlowTankDriveCommand());
 		
 		Button buttonAvanceAvecEncodeurs = new JoystickButton(gamePadPilote, 5); // to be tested once the encoders are installed on the robot
-		buttonAvanceAvecEncodeurs.whenPressed(new RbtxDriveToDistanceWithEncoders(3.0)); // a 3.36 ft de la tour
+		buttonAvanceAvecEncodeurs.whenPressed(new RbtxDriveToDistanceWithEncoders(6.0, 0.7)); // a 3.36 ft de la tour
 		                                                                    
 		Button buttonVaDevantTourTest = new JoystickButton(gamePadPilote, 8);
 		buttonVaDevantTourTest.whenPressed(new RbtxDriveToTargetWithSonarCommand(RbtxDeplacementSubsystem.TOUR));
@@ -102,39 +106,58 @@ public class OI {
 		
 		// Copilote
 		joystickCoPilote = new Joystick(1);
+		final int BOUTON_1   = 1;
+	    final int BOUTON_3   = 3;
+	    final int BOUTON_5   = 5;
+	    final int BOUTON_7   = 7;
+	    final int BOUTON_8   = 8;
+	    final int BOUTON_9   = 9;
+	    final int BOUTON_4   = 4;
+	    final int BOUTON_6   = 6;
+	    final int BOUTON_10  = 10;
+		final int BOUTON_11  = 11;
+	    final int BOUTON_12  = 12;
 		
 		//camera selection
-		Button buttonCameraSelection = new JoystickButton(joystickCoPilote, 11);
+		Button buttonLancerAutomatique = new JoystickButton(joystickCoPilote, BOUTON_11);
+		buttonLancerAutomatique.whenPressed(new RbtxLanceurAutomatiqueCommand()); 
+		//Button buttonCameraSelection = new JoystickButton(joystickCoPilote, BOUTON_11);
+		
+		Button buttonCameraTourne = new JoystickButton(joystickCoPilote, BOUTON_10);
+		buttonCameraTourne.whileHeld(new RbtxsetTiltAngle(90)); //Angle positif pour droite
+		
+		Button buttonCameraRepos = new JoystickButton(joystickCoPilote, BOUTON_12);
+		buttonCameraRepos.whenActive(new RbtxsetTiltAngle(0)); //Angle positif pour droite
 
 		// Boutons bras
-		Button buttonBrasMonter = new JoystickButton(joystickCoPilote, 5);
-		Button buttonBrasDescendre = new JoystickButton(joystickCoPilote, 3);
+		Button buttonBrasMonter = new JoystickButton(joystickCoPilote, BOUTON_5);
+		Button buttonBrasDescendre = new JoystickButton(joystickCoPilote, BOUTON_3);
 
 		buttonBrasMonter.whenPressed(new RbtxBrasMonterCommand());
 		buttonBrasDescendre.whenPressed(new RbtxBrasDescendreCommand());
 
 		// Boutons ramasseur
-		Button buttonRamasseurAspirer = new JoystickButton(joystickCoPilote, 9);
-		Button buttonRamasseurEjecter = new JoystickButton(joystickCoPilote, 4);
+		Button buttonRamasseurAspirer = new JoystickButton(joystickCoPilote, BOUTON_9);
+		Button buttonRamasseurEjecter = new JoystickButton(joystickCoPilote, BOUTON_4);
 
 		buttonRamasseurAspirer.whenPressed(new RbtxRamasseurAspirerCommand());
 		buttonRamasseurEjecter.whileHeld(new RbtxRamasseurEjecterCommand());
 
 		// Boutons accelerateur
-		Button buttonAccelerateur = new JoystickButton(joystickCoPilote, 6);
+		Button buttonAccelerateur = new JoystickButton(joystickCoPilote, BOUTON_6);
 		//Button buttonLanceurActifmin = new JoystickButton(joystickCoPilote, 7);
 
 		buttonAccelerateur.whenPressed(new RbtxAccelerPourLancerCommand());
 		//buttonLanceurActifmin.whileHeld(new RbtxLanceurCommand());
 		
-		Button buttonAccelerateurSetSpeedPID = new JoystickButton(joystickCoPilote, 8);
+		Button buttonAccelerateurSetSpeedPID = new JoystickButton(joystickCoPilote, BOUTON_8);
 		buttonAccelerateurSetSpeedPID.whenPressed(new RbtxSetShooterMaxSpeedPIDCommand(0.95));// to be tested ASAP
 		
 		// Bouton pour lancer
-		Button buttonLancer = new JoystickButton(joystickCoPilote, 1);
+		Button buttonLancer = new JoystickButton(joystickCoPilote, BOUTON_1);
 		buttonLancer.whenPressed(new RbtxLancerCommand());
 		//buttonLancer.whenPressed(new RbtxAutoForwardCommand());
-		Button buttonArretLancer = new JoystickButton(joystickCoPilote, 7);
+		Button buttonArretLancer = new JoystickButton(joystickCoPilote, BOUTON_7);
 		buttonArretLancer.whenPressed(new RbtxArreterAccelerateurCommand());
 
 		// SmartDashboard Buttons
@@ -173,22 +196,31 @@ public class OI {
 	
 	public double getgamePadPiloteYRight() {//Malcolm's choice for gamePadPilote tank drive mode
 		return gamePadPilote.getRawAxis(3);
-		
-		
+			
 	}
 	
+	public double getgamePadaxis4() {//Malcolm's choice for gamePadPilote tank drive mode
+		return gamePadPilote.getRawAxis(4);
+			
+	}
+	
+	public double getgamePadaxis5() {//Malcolm's choice for gamePadPilote tank drive mode
+		return gamePadPilote.getRawAxis(5);
+			
+	}
 	public void log(){
 		SmartDashboard.putBoolean("X-SlowInverseTankDrive", Robot.oi.getGamePadPilote().getRawButton(1));
 		SmartDashboard.putBoolean("A-TankDrive", Robot.oi.getGamePadPilote().getRawButton(2));
 		SmartDashboard.putBoolean("B-SlowTankDrive", Robot.oi.getGamePadPilote().getRawButton(3));
 		SmartDashboard.putBoolean("Y-TankDriveInverse", Robot.oi.getGamePadPilote().getRawButton(4));
-		SmartDashboard.putBoolean("bouton5", Robot.oi.getGamePadPilote().getRawButton(5));
+		SmartDashboard.putBoolean("LB-DriveWithEncoder", Robot.oi.getGamePadPilote().getRawButton(5));
 		SmartDashboard.putBoolean("bouton6", Robot.oi.getGamePadPilote().getRawButton(6));
-		SmartDashboard.putBoolean("bouton7", Robot.oi.getGamePadPilote().getRawButton(7));
+		SmartDashboard.putBoolean("bouton11", Robot.oi.getGamePadPilote().getRawButton(11));
 		SmartDashboard.putBoolean("RT-SonarTargetPID", Robot.oi.getGamePadPilote().getRawButton(8));
 		SmartDashboard.putBoolean("BACK-Turn-test", Robot.oi.getGamePadPilote().getRawButton(9));
 		SmartDashboard.putBoolean("START-Gyro-Assist", Robot.oi.getGamePadPilote().getRawButton(10));
-		
+		SmartDashboard.getNumber("axe4",getgamePadaxis4() );
+		SmartDashboard.getNumber("axe5",getgamePadaxis5() );
 	}
 
 }

@@ -1,20 +1,18 @@
 package org.usfirst.frc3550.RbtxStrongTaupe2016.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class RbtxAutoCompoundCommand extends CommandGroup {
+public class RbtxLanceurAutomatiqueCommand extends CommandGroup {
     
-    public  RbtxAutoCompoundCommand() {
+    public  RbtxLanceurAutomatiqueCommand() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	  addSequential(new RbtxAutoForwardCommand());
-          addSequential(new RbtxReverseAutoCommand());
-          addSequential(new RbtxAutoDriveWithEncoderAndGyroCommand(0, 0, 90));
 
         // To run multiple commands at the same time,
         // use addParallel()
@@ -27,5 +25,8 @@ public class RbtxAutoCompoundCommand extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addParallel(new RbtxAccelerPourLancerCommand());
+    	addParallel(new RbtxLancerPourAutomatiqueCommand());
+    	//addSequential(new RbtxArreteAccelerateurCommand());
     }
 }

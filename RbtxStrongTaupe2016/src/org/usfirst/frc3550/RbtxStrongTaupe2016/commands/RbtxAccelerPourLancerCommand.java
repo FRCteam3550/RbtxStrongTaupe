@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
+import org.usfirst.frc3550.RbtxStrongTaupe2016.RobotMap;
 
 /**
  * La commande RbtxAccelerPourLancerCommand permet de mettre l accelerateur a une vitesse optimale
@@ -51,6 +52,7 @@ public class RbtxAccelerPourLancerCommand extends Command {
     	boolean  accelerateurPret = false;
     	SmartDashboard.putBoolean("Accelerateur Pret", accelerateurPret);
     	Robot.accelerateur.accelererVitesseMaximale();
+    	//RobotMap.moteurAccelerateur.set(0.75);
     	accelerateurPret = (Robot.accelerateur.accelererateurPret() == true);
     	SmartDashboard.putBoolean("Accelerateur Pret", accelerateurPret);
     	

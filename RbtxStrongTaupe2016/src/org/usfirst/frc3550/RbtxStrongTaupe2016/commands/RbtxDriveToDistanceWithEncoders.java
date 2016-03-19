@@ -44,9 +44,11 @@ public class RbtxDriveToDistanceWithEncoders extends Command {
 		error = (distance - Robot.deplacement.getRightEncoder().getDistance());
 		if (driveForwardSpeed * KP * error >= driveForwardSpeed) {
 			Robot.deplacement.driveTank(driveForwardSpeed, driveForwardSpeed);
+			//Robot.deplacement.drive(driveForwardSpeed, 0);
 		} else {
 			Robot.deplacement.driveTank(driveForwardSpeed * KP * error,
 					driveForwardSpeed * KP * error);
+			//Robot.deplacement.driveTank(driveForwardSpeed * KP * error, 0);
 		}
 	}
 

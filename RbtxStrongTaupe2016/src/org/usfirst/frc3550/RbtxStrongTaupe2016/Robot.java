@@ -93,7 +93,8 @@ public class Robot extends IterativeRobot {
         autoSelecteur.addObject("->En avant", new RbtxAutoForwardCommand());
         autoSelecteur.addObject("->Reculer", new RbtxReverseAutoCommand());
         autoSelecteur.addObject("->Composer", new RbtxAutoCompoundCommand());
-        //autoSelecteur.addObject("", new Command()); // Template
+        autoSelecteur.addObject("->DriveEncoder", new RbtxDriveToDistanceWithEncoders(6.0, 0.7));
+                //autoSelecteur.addObject("", new Command()); // Template
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         
        // axisCamera = new AxisCamera("axis-camera.local"); A remettre a NorthBay
@@ -151,9 +152,12 @@ public class Robot extends IterativeRobot {
 		log(); //Template a developper voir plus bas
 		// cameraToggle();
 		Robot.oi.log();
+		//RobotMap.moteurAccelerateur.set(0.6);
 		
 		SmartDashboard.putNumber("gamePadPiloteXaxis: ", Robot.oi.getgamePadPiloteX());
 		SmartDashboard.putNumber("gamePadPiloteYaxis: ", Robot.oi.getgamePadPiloteY());
+		SmartDashboard.getNumber("axe4",Robot.oi.getgamePadaxis4() );
+		SmartDashboard.getNumber("axe5",Robot.oi.getgamePadaxis5());
 		
 		//SmartDashboard.putNumber("JoystickCoPiloteYaxis: ", Robot.oi.joystickCoPilote.getY());
 		
@@ -179,6 +183,10 @@ public class Robot extends IterativeRobot {
 		double Kp = 0.03;
 		SmartDashboard.putNumber("Robot Gyro (rate): ", RobotMap.gyro.getRate());
 		SmartDashboard.putNumber("Robot Gyro (angle): ", angle);
+		
+		SmartDashboard.putNumber("X acceleration component: ", Robot.deplacement.getAccelX());
+		SmartDashboard.putNumber("Y acceleration Component: ", Robot.deplacement.getAccelY());
+		SmartDashboard.putNumber("Z acceleration Component: ", Robot.deplacement.getAccelZ());
 		
 		//RobotMap.drive.arcadeDrive(0.5, -angle*Kp);
 	}

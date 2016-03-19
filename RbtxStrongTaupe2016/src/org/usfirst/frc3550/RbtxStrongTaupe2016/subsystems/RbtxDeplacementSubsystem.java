@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -47,8 +48,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	private AnalogGyro  m_gyro         = RobotMap.gyro;
 	private Encoder     m_leftEncoder  = RobotMap.encodeurDeplacementGauche;
 	private Encoder     m_rightEncoder = RobotMap.encodeurDeplacementDroit;
-	private Servo       m_panServo     = RobotMap.servoPan;
-	private Servo       m_TiltServo    = RobotMap.servoTilt;
+	private Accelerometer m_accelerometer = RobotMap.accel;
+	//private Servo       m_panServo     = RobotMap.servoPan;
+	//private Servo       m_TiltServo    = RobotMap.servoTilt;
 	
 	
 	
@@ -64,12 +66,12 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		// to
 		// enable(); //Enables the PID controller.
 	}
-
+	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		//setDefaultCommand(new RbtxArcadeDriveCommand());
-		setDefaultCommand(new RbtxGyroDriveCommand());
-		//setDefaultCommand(new RbtxTankDriveCommand());
+		//setDefaultCommand(new RbtxGyroDriveCommand());
+		setDefaultCommand(new RbtxTankDriveCommand());
 	}
 
  // Gyro PID part of the subsystem
@@ -186,7 +188,37 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		return ( m_leftEncoder.getDistance() + m_rightEncoder.getDistance())/2;
 	}
 
-	//End of sensor readings
+
+	/**
+	 * getAccelX method returns the component x of the acceleration
+	 * 
+	 * @param no input parameter
+	 */
+	public double getAccelX() {
+		double xVal = m_accelerometer.getX();
+		return xVal;
+	}
+	
+	/**
+	 * getAccelY method returns the component y of the acceleration
+	 * 
+	 * @param no input parameter
+	 */
+	public double getAccelY() {
+		double yVal = m_accelerometer.getY();
+		return yVal;
+	}
+	
+	/**
+	 * getAccelZ method returns the component z of the acceleration
+	 * 
+	 * @param no input parameter
+	 */
+	public double getAccelZ() {
+		double zVal = m_accelerometer.getZ();
+		return zVal;
+	}
+	
 	/**
 	 * stop method is used to stop the robot 
 	 * 
@@ -194,6 +226,13 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	 */
 	public void stop() {
 		m_drive.drive(0, 0);
+	}
+	
+	private void inverseMotors(boolean inverse) {
+		RobotMap.moteurDeplacementAvantGauche.setInverted(inverse);
+		RobotMap.moteurDeplacementArriereGauche.setInverted(inverse);
+		RobotMap.moteurDeplacementAvantDroite.setInverted(inverse);
+		RobotMap.moteurDeplacementArriereDroite.setInverted(inverse);
 	}
 	
 	/**
@@ -204,10 +243,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	public void driveStraight(double speed) {
 		// Configure the RobotDrive to reflect the fact that all our motors are
 	    // wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+		inverseMotors(true);
 		m_drive.drive(speed, 0);
 	}
 	
@@ -223,10 +263,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+		inverseMotors(true);
 		m_drive.arcadeDrive(moveValue, rotateValue, SENSITIVITY);
 	}
 	
@@ -243,10 +284,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+		inverseMotors(false);
 		m_drive.arcadeDrive(moveValue, -1 * rotateValue, SENSITIVITY);
 	}
 	
@@ -263,10 +305,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+		inverseMotors(true);
 		m_drive.arcadeDrive(SLOWSPEED*moveValue, SLOWSPEED*rotateValue, SENSITIVITY);
 	}
 	
@@ -284,10 +327,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+		inverseMotors(false);
 		m_drive.arcadeDrive(SLOWSPEED*moveValue, -1*SLOWSPEED*rotateValue, SENSITIVITY);
 	}
 	
@@ -304,10 +348,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+		inverseMotors(true);
 		//m_drive.arcadeDrive(SLOWSPEED*moveValue, SLOWSPEED*rotateValue, SENSITIVITY);
 		m_drive.tankDrive(leftStick, rightStick, SENSITIVITY);
 	}
@@ -326,10 +371,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+		inverseMotors(false);
 		m_drive.tankDrive(rightStick, leftStick, SENSITIVITY);
 	}
 	
@@ -348,10 +394,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(true);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(true);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
+		inverseMotors(true);
 		//m_drive.arcadeDrive(SLOWSPEED*moveValue, SLOWSPEED*rotateValue, SENSITIVITY);
 		m_drive.tankDrive(leftStick*SLOWSPEED, rightStick*SLOWSPEED, SENSITIVITY);
 	}
@@ -371,10 +418,11 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		
 		// Configure the RobotDrive to reflect the fact that all our motors are
 		// wired backwards and our drivers sensitivity preferences.
-		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
-		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
-		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
-		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+//		RobotMap.moteurDeplacementAvantGauche.setInverted(false);
+//		RobotMap.moteurDeplacementArriereGauche.setInverted(false);
+//		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
+//		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
+		inverseMotors(false);
 		m_drive.tankDrive(rightStick*SLOWSPEED, leftStick*SLOWSPEED, SENSITIVITY);
 	}
 }
