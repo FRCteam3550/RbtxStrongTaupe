@@ -93,7 +93,7 @@ public class Robot extends IterativeRobot {
         autoSelecteur.addObject("->En avant", new RbtxAutoForwardCommand());
         autoSelecteur.addObject("->Reculer", new RbtxReverseAutoCommand());
         autoSelecteur.addObject("->Composer", new RbtxAutoCompoundCommand());
-        autoSelecteur.addObject("->DriveEncoder", new RbtxDriveToDistanceWithEncoders(6.0, 0.7));
+        autoSelecteur.addObject("->DriveEncoder", new RbtxDriveToDistanceWithEncoders(5.0, 0.7));
                 //autoSelecteur.addObject("", new Command()); // Template
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         

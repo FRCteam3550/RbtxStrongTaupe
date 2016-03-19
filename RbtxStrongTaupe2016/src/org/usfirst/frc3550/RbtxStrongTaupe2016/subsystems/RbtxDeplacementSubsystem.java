@@ -185,7 +185,7 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	 * @return The distance driven (average of left and right encoders).
 	 */
 	public double getDistance() {
-		return ( m_leftEncoder.getDistance() + m_rightEncoder.getDistance())/2;
+		return m_rightEncoder.getDistance();
 	}
 
 

@@ -127,14 +127,16 @@ public class RobotMap {
         
         gyro = new AnalogGyro(1); // change from analog 0 to analog 1
         
-        encodeurDeplacementDroit = new Encoder(4, 5, false, EncodingType.k4X);
+        //encodeurDeplacementDroit = new Encoder(4, 5, false, EncodingType.k4X);//vrai robot 2016
+        encodeurDeplacementDroit = new Encoder(7, 8, false, EncodingType.k4X);
         LiveWindow.addSensor("RbtxDeplacementSubsystem", "m_EncodeurDroit", encodeurDeplacementDroit);
        // encodeurDeplacementDroit.setDistancePerPulse(Math.PI*RADIUS_ROUES/490.0);
-        encodeurDeplacementDroit.setDistancePerPulse(((3.20/12.0*Math.PI)*0.5) / 360.0);
+        encodeurDeplacementDroit.setDistancePerPulse(((8.0/12.0*Math.PI)*0.1447) / 360.0);
         
         encodeurDeplacementDroit.setPIDSourceType(PIDSourceType.kRate);
         
-        encodeurDeplacementGauche = new Encoder(7, 8, false, EncodingType.k4X);
+        //encodeurDeplacementGauche = new Encoder(7, 8, false, EncodingType.k4X);//vrai robot 2016
+        encodeurDeplacementGauche = new Encoder(4, 5, false, EncodingType.k4X);
         LiveWindow.addSensor("RbtxDeplacementSubsystem", "m_EncodeurGauche", encodeurDeplacementGauche);
         encodeurDeplacementGauche.setDistancePerPulse(((3.20/12.0*Math.PI)*0.5)/ 360.0);
         encodeurDeplacementGauche.setPIDSourceType(PIDSourceType.kRate);
