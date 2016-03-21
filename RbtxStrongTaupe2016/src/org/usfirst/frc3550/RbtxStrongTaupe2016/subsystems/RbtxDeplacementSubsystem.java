@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc3550.RbtxStrongTaupe2016.Robot;
 import org.usfirst.frc3550.RbtxStrongTaupe2016.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDSourceType;
 
 /**
  *
@@ -65,6 +66,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 		// setSetpoint() - Sets where the PID controller should move the system
 		// to
 		// enable(); //Enables the PID controller.
+		 m_rightEncoder.setDistancePerPulse(((8.0/12.0*Math.PI)*0.2151) / 360.0);
+	        
+	     m_rightEncoder.setPIDSourceType(PIDSourceType.kRate);
 	}
 	
 	public void initDefaultCommand() {

@@ -93,7 +93,9 @@ public class Robot extends IterativeRobot {
         autoSelecteur.addObject("->En avant", new RbtxAutoForwardCommand());
         autoSelecteur.addObject("->Reculer", new RbtxReverseAutoCommand());
         autoSelecteur.addObject("->Composer", new RbtxAutoCompoundCommand());
-        autoSelecteur.addObject("->DriveEncoder", new RbtxDriveToDistanceWithEncoders(5.0, 0.7));
+        autoSelecteur.addObject("->DriveEncoder", new RbtxDriveToDistanceWithEncoders(5.0, 0.6));
+        autoSelecteur.addObject("->Shooter Autonome", new RbtxShooterAutomatiqueCommand());
+        autoSelecteur.addObject("->Deplacement et shooter automatique", new RbtxDeplacerEtShooterAutonomeCommand(5));
                 //autoSelecteur.addObject("", new Command()); // Template
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         
@@ -154,10 +156,10 @@ public class Robot extends IterativeRobot {
 		Robot.oi.log();
 		//RobotMap.moteurAccelerateur.set(0.6);
 		
-		SmartDashboard.putNumber("gamePadPiloteXaxis: ", Robot.oi.getgamePadPiloteX());
+	   /* SmartDashboard.putNumber("gamePadPiloteXaxis: ", Robot.oi.getgamePadPiloteX());
 		SmartDashboard.putNumber("gamePadPiloteYaxis: ", Robot.oi.getgamePadPiloteY());
 		SmartDashboard.getNumber("axe4",Robot.oi.getgamePadaxis4() );
-		SmartDashboard.getNumber("axe5",Robot.oi.getgamePadaxis5());
+		SmartDashboard.getNumber("axe5",Robot.oi.getgamePadaxis5()); */
 		
 		//SmartDashboard.putNumber("JoystickCoPiloteYaxis: ", Robot.oi.joystickCoPilote.getY());
 		
@@ -166,27 +168,27 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("BrasEnHaut: ", !RobotMap.brasEnHaut.get());
 		SmartDashboard.putBoolean("BallonPresent: ", RobotMap.BallonPresent.get());
 		
-		SmartDashboard.putNumber("Angle Encodeur Bras: ", (RobotMap.encodeurBras.getRaw()* 490.0 / 360.0));
+		//SmartDashboard.putNumber("Angle Encodeur Bras: ", (RobotMap.encodeurBras.getRaw()* 490.0 / 360.0));
 		
 		SmartDashboard.putNumber("Encodeur Deplacement Droit: ", RobotMap.encodeurDeplacementDroit.getDistance());
-		SmartDashboard.putNumber("Encodeur Deplacement Gauche: ", RobotMap.encodeurDeplacementGauche.getDistance());
+		//SmartDashboard.putNumber("Encodeur Deplacement Gauche: ", RobotMap.encodeurDeplacementGauche.getDistance());
 		
-		SmartDashboard.putNumber("Deplacement PID position", (Robot.deplacement.getPosition()/SONAR_VOLTAGE2DISTANCE)*2.54);
+		//SmartDashboard.putNumber("Deplacement PID position", (Robot.deplacement.getPosition()/SONAR_VOLTAGE2DISTANCE)*2.54);
 		
-		SmartDashboard.putNumber("Forward Sonar (voltage): ",     RobotMap.forwardSonar.getVoltage());
+		/*SmartDashboard.putNumber("Forward Sonar (voltage): ",     RobotMap.forwardSonar.getVoltage());
 		SmartDashboard.putNumber("Forward Sonar (value): ",       RobotMap.forwardSonar.getValue());
 		SmartDashboard.putNumber("Forward Sonar (avg voltage): ", RobotMap.forwardSonar.getAverageVoltage());
 		SmartDashboard.putNumber("Forward Sonar: (cm)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*2.54);
-		SmartDashboard.putNumber("Forward Sonar: (ft)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*0.0833);
+		SmartDashboard.putNumber("Forward Sonar: (ft)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*0.0833);*/
 	
 		double angle = RobotMap.gyro.getAngle();
 		double Kp = 0.03;
 		SmartDashboard.putNumber("Robot Gyro (rate): ", RobotMap.gyro.getRate());
 		SmartDashboard.putNumber("Robot Gyro (angle): ", angle);
 		
-		SmartDashboard.putNumber("X acceleration component: ", Robot.deplacement.getAccelX());
-		SmartDashboard.putNumber("Y acceleration Component: ", Robot.deplacement.getAccelY());
-		SmartDashboard.putNumber("Z acceleration Component: ", Robot.deplacement.getAccelZ());
+		//SmartDashboard.putNumber("X acceleration component: ", Robot.deplacement.getAccelX());
+		//SmartDashboard.putNumber("Y acceleration Component: ", Robot.deplacement.getAccelY());
+		//SmartDashboard.putNumber("Z acceleration Component: ", Robot.deplacement.getAccelZ());
 		
 		//RobotMap.drive.arcadeDrive(0.5, -angle*Kp);
 	}

@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RbtxLanceurAutomatiqueCommand extends CommandGroup {
+public class RbtxShooterAutomatiqueCommand extends CommandGroup {
     
-    public  RbtxLanceurAutomatiqueCommand() {
+    public  RbtxShooterAutomatiqueCommand() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -25,8 +25,9 @@ public class RbtxLanceurAutomatiqueCommand extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new RbtxAccelerPourLancerCommand());
+    	//addSequential(new RbtxDriveToDistanceWithEncoders(6, 0.5));
     	addParallel(new RbtxLancerPourAutomatiqueCommand());
-    	//addSequential(new RbtxArreteAccelerateurCommand());
+    	addSequential(new RbtxAccelerPourLancerAutomatiqueCommand());
+    	//addParallel(new RbtxDriveToDistanceWithEncoders(5, 0.5));
     }
 }

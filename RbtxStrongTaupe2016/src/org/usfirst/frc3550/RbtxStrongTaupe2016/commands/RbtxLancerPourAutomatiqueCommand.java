@@ -20,16 +20,19 @@ public class RbtxLancerPourAutomatiqueCommand extends Command {
     protected void initialize() {
     	Robot.ramasseur.stop(); 
     	Timer.delay(3);
+    	setTimeout(8);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Robot.ramasseur.stop(); 
+    	//Timer.delay(3);
     	Robot.ramasseur.aspirerLeBallon();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;
+    	return isTimedOut();
   
     }
 

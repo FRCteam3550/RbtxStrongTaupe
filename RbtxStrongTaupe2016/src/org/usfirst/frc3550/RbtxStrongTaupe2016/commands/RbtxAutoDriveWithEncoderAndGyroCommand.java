@@ -98,7 +98,7 @@ public class RbtxAutoDriveWithEncoderAndGyroCommand extends Command {
     	gyroPID.reset();
     	gyroPID.setSetpoint(gyroSetpoint);
     	gyroPID.enable();
-    	//setTimeout(2);
+    	setTimeout(2);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -122,7 +122,7 @@ public class RbtxAutoDriveWithEncoderAndGyroCommand extends Command {
     protected boolean isFinished() {
     	//return (Math.abs(error) <= TOLERANCE) || isTimedOut(); // to uncomment after tests
     	//return isTimedOut();  // to delete after tests
-    	return gyroPID.onTarget();
+    	return gyroPID.onTarget() || isTimedOut();
     	//return (Math.abs((gyroSetpoint-rotateValue)) < 0.5) ;
     }
 

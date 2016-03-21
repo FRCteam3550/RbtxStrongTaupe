@@ -66,6 +66,7 @@ public class OI {
 		int BUTTON_A = 2;
 		int BUTTON_B = 3;
 		int BUTTON_Y = 4;
+		int BUTTON_LB = 5;
 		
 		//Button buttonInverseDrive = new JoystickButton(gamePadPilote, 4);
 		//buttonInverseDrive.whenPressed(new RbtxArcadeDriveInversedCommand());
@@ -91,8 +92,8 @@ public class OI {
 		Button buttonSlowTankDrive = new JoystickButton(gamePadPilote, BUTTON_B);
 		buttonSlowTankDrive.whenPressed(new RbtxSlowTankDriveCommand());
 		
-		Button buttonAvanceAvecEncodeurs = new JoystickButton(gamePadPilote, 5); // to be tested once the encoders are installed on the robot
-		buttonAvanceAvecEncodeurs.whenPressed(new RbtxDriveToDistanceWithEncoders(6.0, 0.7)); // a 3.36 ft de la tour
+		Button buttonAvanceAvecEncodeurs = new JoystickButton(gamePadPilote,BUTTON_LB); // to be tested once the encoders are installed on the robot
+		buttonAvanceAvecEncodeurs.whenPressed(new RbtxDriveToDistanceWithEncoders(2.0, 0.7)); // a 3.36 ft de la tour
 		                                                                    
 		Button buttonVaDevantTourTest = new JoystickButton(gamePadPilote, 8);
 		buttonVaDevantTourTest.whenPressed(new RbtxDriveToTargetWithSonarCommand(RbtxDeplacementSubsystem.TOUR));
@@ -120,7 +121,7 @@ public class OI {
 		
 		//camera selection
 		Button buttonLancerAutomatique = new JoystickButton(joystickCoPilote, BOUTON_11);
-		buttonLancerAutomatique.whenPressed(new RbtxLanceurAutomatiqueCommand()); 
+		buttonLancerAutomatique.whenPressed(new RbtxShooterAutomatiqueCommand()); 
 		//Button buttonCameraSelection = new JoystickButton(joystickCoPilote, BOUTON_11);
 		
 		Button buttonCameraTourne = new JoystickButton(joystickCoPilote, BOUTON_10);

@@ -131,7 +131,7 @@ public class RobotMap {
         encodeurDeplacementDroit = new Encoder(7, 8, false, EncodingType.k4X);
         LiveWindow.addSensor("RbtxDeplacementSubsystem", "m_EncodeurDroit", encodeurDeplacementDroit);
        // encodeurDeplacementDroit.setDistancePerPulse(Math.PI*RADIUS_ROUES/490.0);
-        encodeurDeplacementDroit.setDistancePerPulse(((8.0/12.0*Math.PI)*0.1447) / 360.0);
+        encodeurDeplacementDroit.setDistancePerPulse(((8.0/12.0*Math.PI)*0.2151) / 360.0);
         
         encodeurDeplacementDroit.setPIDSourceType(PIDSourceType.kRate);
         
