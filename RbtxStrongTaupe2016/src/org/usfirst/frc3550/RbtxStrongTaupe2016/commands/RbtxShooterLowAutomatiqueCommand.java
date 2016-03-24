@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RbtxDeplacerStraightTurnStraightShooterAutonomeCommand extends CommandGroup {
+public class RbtxShooterLowAutomatiqueCommand extends CommandGroup {
     
-    public  RbtxDeplacerStraightTurnStraightShooterAutonomeCommand(double distance1, double distance2, double Speed, double turnAngle) {
+    public  RbtxShooterLowAutomatiqueCommand() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -25,13 +25,9 @@ public class RbtxDeplacerStraightTurnStraightShooterAutonomeCommand extends Comm
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new RbtxBrasDescendreAutonomeCommand());
-    	addSequential(new RbtxDriveToDistanceWithEncoders(distance1, Speed));
-    	//30 represents the angle in degree. The robot turns 60 degrees clockwise
-    	addSequential(new RbtxAutoDriveWithEncoderAndGyroCommand(0, 0, turnAngle));
-    	addSequential(new RbtxDriveToDistanceWithEncoders(distance2, Speed));
-    	addSequential(new RbtxShooterAutomatiqueCommand());
-  	  	
-
+    	//addSequential(new RbtxDriveToDistanceWithEncoders(6, 0.5));
+    	addParallel(new RbtxLancerPourAutomatiqueCommand());
+    	addSequential(new RbtxAccelerPourLancerLowAutomatiqueCommand());
+    	//addParallel(new RbtxDriveToDistanceWithEncoders(5, 0.5));
     }
 }

@@ -38,6 +38,7 @@ public class RbtxBrasDescendreCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(2); // added at North Bay; to be tested
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -47,7 +48,7 @@ public class RbtxBrasDescendreCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-       return Robot.bras.isTooLow();
+       return (Robot.bras.isTooLow() || isTimedOut());
     }
 
     // Called once after isFinished returns true

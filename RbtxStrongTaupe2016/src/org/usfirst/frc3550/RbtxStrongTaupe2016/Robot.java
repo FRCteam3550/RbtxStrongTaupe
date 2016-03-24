@@ -93,11 +93,16 @@ public class Robot extends IterativeRobot {
         autoSelecteur.addObject("->En avant", new RbtxAutoForwardCommand());
         autoSelecteur.addObject("->Reculer", new RbtxReverseAutoCommand());
         autoSelecteur.addObject("->Composer", new RbtxAutoCompoundCommand());
+        //DriveEncoder : @inputs distance to drive in ft and speed
         autoSelecteur.addObject("->DriveEncoder", new RbtxDriveToDistanceWithEncoders(5.0, 0.6));
         autoSelecteur.addObject("->Shooter Autonome", new RbtxShooterAutomatiqueCommand());
-        autoSelecteur.addObject("->Deplacement et shooter automatique", new RbtxDeplacerStraightEtShooterAutonomeCommand(5));
-        autoSelecteur.addObject("->Deplacement tourner deplacer et shooter", new RbtxDeplacerStraightTurnStraightShooterAutonomeCommand(2.0, 2.0));
-                //autoSelecteur.addObject("", new Command()); // Template
+        //MoveShoot : @input distance to drive in ft
+        autoSelecteur.addObject("->MoveShoot:", new RbtxDeplacerStraightEtShooterAutonomeCommand(5));
+        //ArmLowMoveTurnMoveShoot : @inputs distanc1  in ft distance2 in ft speed turnAngle in degrees
+        autoSelecteur.addObject("->ArmLowMoveTurnMoveShoot:", new RbtxDeplacerStraightTurnStraightShooterAutonomeCommand(19.05, 8.17, 0.5, 30));
+        //ArmLowMoveShootLow      : @inputs distance1  to drive forward in ft distance2 to drive backward in ft SPEED turnAngle in degrees
+        autoSelecteur.addObject("->ArmLowMoveShootLow:", new RbtxDeplacerStraightShooterLowTargetmoveBackAutonomeCommand(19.05, 8.17, 0.5,30));
+        //autoSelecteur.addObject("", new Command()); // Template
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         
        // axisCamera = new AxisCamera("axis-camera.local"); A remettre a NorthBay
@@ -152,9 +157,10 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		log(); //Template a developper voir plus bas
+		//log(); //Template a developper voir plus bas
 		// cameraToggle();
-		Robot.oi.log();
+		//Robot.oi.log();
+		Robot.oi.logCoPiloteJoystick();
 		//RobotMap.moteurAccelerateur.set(0.6);
 		
 	   /* SmartDashboard.putNumber("gamePadPiloteXaxis: ", Robot.oi.getgamePadPiloteX());
@@ -176,11 +182,11 @@ public class Robot extends IterativeRobot {
 		
 		//SmartDashboard.putNumber("Deplacement PID position", (Robot.deplacement.getPosition()/SONAR_VOLTAGE2DISTANCE)*2.54);
 		
-		/*SmartDashboard.putNumber("Forward Sonar (voltage): ",     RobotMap.forwardSonar.getVoltage());
-		SmartDashboard.putNumber("Forward Sonar (value): ",       RobotMap.forwardSonar.getValue());
-		SmartDashboard.putNumber("Forward Sonar (avg voltage): ", RobotMap.forwardSonar.getAverageVoltage());
-		SmartDashboard.putNumber("Forward Sonar: (cm)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*2.54);
-		SmartDashboard.putNumber("Forward Sonar: (ft)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*0.0833);*/
+		SmartDashboard.putNumber("Forward Sonar (voltage): ",     RobotMap.forwardSonar.getVoltage());
+		//SmartDashboard.putNumber("Forward Sonar (value): ",       RobotMap.forwardSonar.getValue());
+		//SmartDashboard.putNumber("Forward Sonar (avg voltage): ", RobotMap.forwardSonar.getAverageVoltage());
+		//SmartDashboard.putNumber("Forward Sonar: (cm)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*2.54);
+		SmartDashboard.putNumber("Forward Sonar: (ft)",       (RobotMap.forwardSonar.getAverageVoltage()/SONAR_VOLTAGE2DISTANCE)*0.0833);
 	
 		double angle = RobotMap.gyro.getAngle();
 		double Kp = 0.03;

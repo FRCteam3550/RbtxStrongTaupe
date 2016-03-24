@@ -35,7 +35,7 @@ public class RbtxGyroDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("gyro position Commande", Robot.deplacement.getPosition());
+    	//SmartDashboard.putNumber("gyro position Commande", Robot.deplacement.getPosition());
     	//Robot.deplacement.gyroDrive(Robot.deplacement.getPosition());
     }
 

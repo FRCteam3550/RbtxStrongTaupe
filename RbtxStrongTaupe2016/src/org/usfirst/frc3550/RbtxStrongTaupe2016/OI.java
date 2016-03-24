@@ -93,10 +93,10 @@ public class OI {
 		buttonSlowTankDrive.whenPressed(new RbtxSlowTankDriveCommand());
 		
 		Button buttonAvanceAvecEncodeurs = new JoystickButton(gamePadPilote,BUTTON_LB); // to be tested once the encoders are installed on the robot
-		buttonAvanceAvecEncodeurs.whenPressed(new RbtxDriveToDistanceWithEncoders(2.0, 0.7)); // a 3.36 ft de la tour
+		//buttonAvanceAvecEncodeurs.whenPressed(new RbtxDriveToDistanceWithEncoders(2.0, 0.7)); // a 3.36 ft de la tour
 		                                                                    
 		Button buttonVaDevantTourTest = new JoystickButton(gamePadPilote, 8);
-		buttonVaDevantTourTest.whenPressed(new RbtxDriveToTargetWithSonarCommand(RbtxDeplacementSubsystem.TOUR));
+		//buttonVaDevantTourTest.whenPressed(new RbtxDriveToTargetWithSonarCommand(RbtxDeplacementSubsystem.TOUR));
 		
 		Button buttonGyroTest = new JoystickButton(gamePadPilote, 10);
 		buttonGyroTest.whenPressed(new RbtxGyroDriveCommand());
@@ -115,7 +115,7 @@ public class OI {
 	    final int BOUTON_9   = 9;
 	    final int BOUTON_4   = 4;
 	    final int BOUTON_6   = 6;
-	    final int BOUTON_10  = 10;
+	    final int BOUTON_10  = 10;  
 		final int BOUTON_11  = 11;
 	    final int BOUTON_12  = 12;
 		
@@ -125,10 +125,10 @@ public class OI {
 		//Button buttonCameraSelection = new JoystickButton(joystickCoPilote, BOUTON_11);
 		
 		Button buttonCameraTourne = new JoystickButton(joystickCoPilote, BOUTON_10);
-		buttonCameraTourne.whileHeld(new RbtxsetTiltAngle(90)); //Angle positif pour droite
+		//buttonCameraTourne.whileHeld(new RbtxsetTiltAngle(90)); //Angle positif pour droite
 		
 		Button buttonCameraRepos = new JoystickButton(joystickCoPilote, BOUTON_12);
-		buttonCameraRepos.whenActive(new RbtxsetTiltAngle(0)); //Angle positif pour droite
+		//buttonCameraRepos.whenActive(new RbtxsetTiltAngle(0)); //Angle positif pour droite
 
 		// Boutons bras
 		Button buttonBrasMonter = new JoystickButton(joystickCoPilote, BOUTON_5);
@@ -152,7 +152,7 @@ public class OI {
 		//buttonLanceurActifmin.whileHeld(new RbtxLanceurCommand());
 		
 		Button buttonAccelerateurSetSpeedPID = new JoystickButton(joystickCoPilote, BOUTON_8);
-		buttonAccelerateurSetSpeedPID.whenPressed(new RbtxSetShooterMaxSpeedPIDCommand(0.95));// to be tested ASAP
+		//buttonAccelerateurSetSpeedPID.whenPressed(new RbtxSetShooterMaxSpeedPIDCommand(0.95));// to be tested ASAP
 		
 		// Bouton pour lancer
 		Button buttonLancer = new JoystickButton(joystickCoPilote, BOUTON_1);
@@ -223,6 +223,12 @@ public class OI {
 		SmartDashboard.getNumber("axe4",getgamePadaxis4() );
 		SmartDashboard.getNumber("axe5",getgamePadaxis5() );
 	}
-
+	
+	public void logCoPiloteJoystick(){
+		SmartDashboard.putNumber("Axis 1", Robot.oi.joystickCoPilote.getRawAxis(1));
+		SmartDashboard.putNumber("Axis 2", Robot.oi.joystickCoPilote.getRawAxis(2));
+		SmartDashboard.putNumber("Axis 3", Robot.oi.joystickCoPilote.getRawAxis(3));
+		//SmartDashboard.putNumber("Axis 4", Robot.oi.joystickCoPilote.getRawAxis(4));
+	}
 }
 

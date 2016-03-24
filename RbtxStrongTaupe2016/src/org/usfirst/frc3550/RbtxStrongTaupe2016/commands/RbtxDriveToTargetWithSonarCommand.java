@@ -92,7 +92,7 @@ public class RbtxDriveToTargetWithSonarCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	SmartDashboard.putNumber("difference PIDSonar : ", Math.abs(PIDSonar.get()-setpoint));
+    	//SmartDashboard.putNumber("difference PIDSonar : ", Math.abs(PIDSonar.get()-setpoint));
     	return Math.abs(Robot.deplacement.getDistanceToTarget()-setpoint) < 0.02;
     }
 
