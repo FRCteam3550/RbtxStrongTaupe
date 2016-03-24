@@ -43,7 +43,8 @@ public class RbtxAccelerateurSubsystem extends Subsystem {
 	public void initDefaultCommand() {
 		
 		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		// setDefaultCommand(new MySpecialCommand()); // To remove once we have a constant value
+		setDefaultCommand(new RbtxAccelerPourLancerManuelleCommand());
 	}
 	
 	/**
@@ -54,6 +55,20 @@ public class RbtxAccelerateurSubsystem extends Subsystem {
 	 */
 	public void accelererVitesseMaximale() {
 			m_moteur.set(VITESSE_MAXIMALE);
+	}
+	
+	/**
+	 * La methode accelerVitesseManuelle permet de mettre le shooter a une vitesse optimale d un tir.
+	 * a laide du throtlle du joystick
+	 *
+	 * @param valeur lue du throttle du copilote
+	 */
+	public void accelererVitesseManuelle(double ThrottleValue){
+		double vitesse = ThrottleValue;
+		if (vitesse < 0){
+			vitesse = 0;
+			}
+			m_moteur.set(vitesse);
 	}
 
 	/**

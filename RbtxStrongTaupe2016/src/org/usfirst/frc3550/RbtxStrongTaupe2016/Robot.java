@@ -95,7 +95,8 @@ public class Robot extends IterativeRobot {
         autoSelecteur.addObject("->Composer", new RbtxAutoCompoundCommand());
         autoSelecteur.addObject("->DriveEncoder", new RbtxDriveToDistanceWithEncoders(5.0, 0.6));
         autoSelecteur.addObject("->Shooter Autonome", new RbtxShooterAutomatiqueCommand());
-        autoSelecteur.addObject("->Deplacement et shooter automatique", new RbtxDeplacerEtShooterAutonomeCommand(5));
+        autoSelecteur.addObject("->Deplacement et shooter automatique", new RbtxDeplacerStraightEtShooterAutonomeCommand(5));
+        autoSelecteur.addObject("->Deplacement tourner deplacer et shooter", new RbtxDeplacerStraightTurnStraightShooterAutonomeCommand(2.0, 2.0));
                 //autoSelecteur.addObject("", new Command()); // Template
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         

@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RbtxDeplacerEtShooterAutonomeCommand extends CommandGroup {
+public class RbtxDeplacerStraightEtShooterAutonomeCommand extends CommandGroup {
     
-    public  RbtxDeplacerEtShooterAutonomeCommand(double StartPosition) {
+    public  RbtxDeplacerStraightEtShooterAutonomeCommand(double StartPosition) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,6 +26,7 @@ public class RbtxDeplacerEtShooterAutonomeCommand extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	// -2.23 ft represents the closest distance to the target safe enough to score
     	addSequential(new RbtxDriveToDistanceWithEncoders(StartPosition-2.23, 0.5));
     	addSequential(new RbtxShooterAutomatiqueCommand());
   	  	
