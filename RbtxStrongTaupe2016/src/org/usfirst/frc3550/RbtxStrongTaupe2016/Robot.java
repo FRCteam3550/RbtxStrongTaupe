@@ -94,7 +94,8 @@ public class Robot extends IterativeRobot {
         autoSelecteur.addObject("->Reculer", new RbtxReverseAutoCommand());
         autoSelecteur.addObject("->Composer", new RbtxAutoCompoundCommand());
         //DriveEncoder : @inputs distance to drive in ft and speed
-        autoSelecteur.addObject("->Going Forward", new RbtxDriveToDistanceWithEncoders(-13.0, 0.6));
+        //autoSelecteur.addObject("->Going Forward", new RbtxDriveToDistanceWithEncoders(-13.0, 0.6));
+        autoSelecteur.addObject("->Going Forward", new RbtxDriveForwardAutonomeCommand(-13.0, 0.6));
         autoSelecteur.addObject("->Shooter Autonome", new RbtxShooterAutomatiqueCommand());
         //MoveShoot : @input distance to drive in ft
         autoSelecteur.addObject("->MoveShoot:", new RbtxDeplacerStraightEtShooterAutonomeCommand(5));

@@ -74,9 +74,9 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		//setDefaultCommand(new RbtxArcadeDriveCommand());
+		setDefaultCommand(new RbtxArcadeDriveCommand());
 		//setDefaultCommand(new RbtxGyroDriveCommand());
-		setDefaultCommand(new RbtxTankDriveCommand());
+		//setDefaultCommand(new RbtxTankDriveCommand());
 	}
 
  // Gyro PID part of the subsystem
