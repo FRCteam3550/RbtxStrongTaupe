@@ -95,8 +95,8 @@ public class RobotMap {
         LiveWindow.addActuator("RbtxDeplacementSubsystem", "m_ArriereGauche", (LiveWindowSendable) moteurDeplacementArriereGauche);
         
         // Changed for testing on robot 2015
-        moteurRamasseur = new CANTalon(5);
-        // moteurRamasseur = new Talon(1);
+        //moteurRamasseur = new CANTalon(5);
+         moteurRamasseur = new Talon(8);
         LiveWindow.addActuator("RbtxRamasseurSubsystem", "m_moteur", (LiveWindowSendable) moteurRamasseur);
         
        // limitSwitchRamasseur = new DigitalInput(1);
@@ -143,7 +143,8 @@ public class RobotMap {
         LiveWindow.addSensor("RbtxDeplacementSubsystem", "m_EncodeurGauche", encodeurDeplacementGauche);
         
         
-        encodeurDeplacementGauche.setDistancePerPulse(((3.20/12.0*Math.PI)*0.5)/ 360.0);
+       // encodeurDeplacementGauche.setDistancePerPulse(((3.20/12.0*Math.PI)*0.1)/ 360.0);
+        encodeurDeplacementGauche.setDistancePerPulse(((3.20/12.0*Math.PI)*0.2151)/ 360.0);
         encodeurDeplacementGauche.setPIDSourceType(PIDSourceType.kRate);
         
         encodeurBras = new Encoder(2, 3, false, EncodingType.k4X);

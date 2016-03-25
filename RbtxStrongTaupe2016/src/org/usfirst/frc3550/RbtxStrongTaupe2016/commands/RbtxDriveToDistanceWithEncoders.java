@@ -22,7 +22,7 @@ public class RbtxDriveToDistanceWithEncoders extends Command {
 	private double distance;
 	private double error;
 	private final double TOLERANCE = 0.001;
-	private final double KP_encoder = 2; //-2 / 5.0;
+	private final double KP_encoder = -2; //-2 / 5.0;
 	private final double KD_encoder=0;
 	private final double KI_encoder=0;
 
@@ -93,7 +93,7 @@ public class RbtxDriveToDistanceWithEncoders extends Command {
 		error = (distance - Robot.deplacement.getRightEncoder().getDistance());
 		SmartDashboard.putNumber("Right Encoder Error: ", error);
 	    Robot.deplacement.drive(-1*driveForwardSpeed, 0);
-	    SmartDashboard.putNumber("Right Distance Actual1: ", Robot.deplacement.getDistance());
+	    SmartDashboard.putNumber("Right Distance PID : ", Robot.deplacement.getDistance());
 	}
 
 	protected boolean isFinished() {

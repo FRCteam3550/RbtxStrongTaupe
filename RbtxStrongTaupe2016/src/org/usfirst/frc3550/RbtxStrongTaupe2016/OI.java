@@ -102,7 +102,7 @@ public class OI {
 		buttonGyroTest.whenPressed(new RbtxGyroDriveCommand());
 		
 		Button buttonGyroTurn = new JoystickButton(gamePadPilote, 9);
-		buttonGyroTurn.whenActive(new RbtxAutoDriveWithEncoderAndGyroCommand(0, 0, 45));
+		buttonGyroTurn.whenPressed(new RbtxAutoDriveWithEncoderAndGyroCommand(0, 0, 10));
 		
 		
 		// Copilote
