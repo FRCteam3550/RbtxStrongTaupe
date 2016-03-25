@@ -94,18 +94,18 @@ public class Robot extends IterativeRobot {
         autoSelecteur.addObject("->Reculer", new RbtxReverseAutoCommand());
         autoSelecteur.addObject("->Composer", new RbtxAutoCompoundCommand());
         //DriveEncoder : @inputs distance to drive in ft and speed
-        autoSelecteur.addObject("->DriveEncoder", new RbtxDriveToDistanceWithEncoders(5.0, 0.6));
+        autoSelecteur.addObject("->Going Forward", new RbtxDriveToDistanceWithEncoders(-13.0, 0.6));
         autoSelecteur.addObject("->Shooter Autonome", new RbtxShooterAutomatiqueCommand());
         //MoveShoot : @input distance to drive in ft
         autoSelecteur.addObject("->MoveShoot:", new RbtxDeplacerStraightEtShooterAutonomeCommand(5));
         //ArmLowMoveTurnMoveShoot : @inputs distanc1 19.09 in ft distance2 8.17 in ft speed 0.5 turnAngle 30 in degrees
-        autoSelecteur.addObject("->ArmLowMoveTurnMoveShoot:", new RbtxDeplacerStraightTurnStraightShooterAutonomeCommand(-19.09, -8.17, 0.5, 30));
+        autoSelecteur.addObject("->ArmLowMoveTurnMoveShoot:", new RbtxDeplacerStraightTurnStraightShooterAutonomeCommand(-19.09, -8.20, 0.5, 30));
         //ArmLowMoveShootLow      : @inputs distance1  to drive forward in ft distance2 to drive backward in ft SPEED turnAngle in degrees
         autoSelecteur.addObject("->ArmLowMoveShootLow:", new RbtxDeplacerStraightShooterLowTargetmoveBackAutonomeCommand(-19.09, 8.17, 0.5,30));
         //autoSelecteur.addObject("", new Command()); // Template
         SmartDashboard.putData("Selection Autonomes", autoSelecteur);
         
-        axisCamera = new AxisCamera("cam2"); //A remettre a NorthBay
+        axisCamera = new AxisCamera("axis-camera.local"); //A remettre a NorthBay
         usbCamera = CameraServer.getInstance();
         usbCamera.setQuality(50); //be carefull when changing this value, 30 doesnt work
         //the camera name (ex "cam0") can be found through the roborio web interface

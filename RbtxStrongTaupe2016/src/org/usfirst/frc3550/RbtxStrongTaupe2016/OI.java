@@ -80,16 +80,20 @@ public class OI {
 		//Button buttonInverseSlowDrive = new JoystickButton(gamePadPilote, 1);
 		//buttonInverseSlowDrive.whenPressed(new RbtxSlowDriveInverseCommand());
 		
-		Button buttonInverseDrive = new JoystickButton(gamePadPilote, BUTTON_Y);
+		Button buttonInverseDrive = new JoystickButton(gamePadPilote, BUTTON_Y);// Button4
+		//buttonInverseDrive.whenPressed(new RbtxArcadeDriveInversedCommand());
 		buttonInverseDrive.whenPressed(new RbtxInverseTankDriveCommand());
 		
-		Button buttonDrive = new JoystickButton(gamePadPilote, BUTTON_A);
+		Button buttonDrive = new JoystickButton(gamePadPilote, BUTTON_A);// Button2
+		//buttonDrive.whenPressed(new RbtxArcadeDriveCommand());
 		buttonDrive.whenPressed(new RbtxTankDriveCommand());
 		
-		Button buttonInverseSlowTankDrive = new JoystickButton(gamePadPilote, BUTTON_X);
+		Button buttonInverseSlowTankDrive = new JoystickButton(gamePadPilote, BUTTON_X);//Button1
+		//buttonInverseSlowTankDrive.whenPressed(new RbtxSlowDriveInverseCommand());
 		buttonInverseSlowTankDrive.whenPressed(new RbtxInverseSlowTankDriveCommand());
 				
-		Button buttonSlowTankDrive = new JoystickButton(gamePadPilote, BUTTON_B);
+		Button buttonSlowTankDrive = new JoystickButton(gamePadPilote, BUTTON_B);//Button3
+		//buttonSlowTankDrive.whenPressed(new RbtxSlowDriveCommand());
 		buttonSlowTankDrive.whenPressed(new RbtxSlowTankDriveCommand());
 		
 		Button buttonAvanceAvecEncodeurs = new JoystickButton(gamePadPilote,BUTTON_LB); // to be tested once the encoders are installed on the robot
@@ -99,10 +103,10 @@ public class OI {
 		//buttonVaDevantTourTest.whenPressed(new RbtxDriveToTargetWithSonarCommand(RbtxDeplacementSubsystem.TOUR));
 		
 		Button buttonGyroTest = new JoystickButton(gamePadPilote, 10);
-		buttonGyroTest.whenPressed(new RbtxGyroDriveCommand());
+		//buttonGyroTest.whenPressed(new RbtxGyroDriveCommand());
 		
 		Button buttonGyroTurn = new JoystickButton(gamePadPilote, 9);
-		buttonGyroTurn.whenPressed(new RbtxAutoDriveWithEncoderAndGyroCommand(0, 0, 10));
+		//buttonGyroTurn.whenPressed(new RbtxAutoDriveWithEncoderAndGyroCommand(0, 0, 10));
 		
 		
 		// Copilote

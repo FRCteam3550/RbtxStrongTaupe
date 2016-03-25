@@ -40,6 +40,7 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 	public static final double   TOUR2     = 0.8; // for testing purpose only
 	
 	
+	public static final double NORMALSPEED  = 0.90;  //drive for normal speed
 	public static final double SLOWSPEED    = 0.75;  //drive motor slow speed
 	public static final boolean SENSITIVITY = true; // drive motor sensibility
 	
@@ -272,7 +273,7 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 //		RobotMap.moteurDeplacementAvantDroite.setInverted(true);
 //		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
 		inverseMotors(true);
-		m_drive.arcadeDrive(moveValue, rotateValue, SENSITIVITY);
+		m_drive.arcadeDrive(NORMALSPEED*moveValue, NORMALSPEED*rotateValue, SENSITIVITY);
 	}
 	
 	/**
@@ -293,7 +294,7 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 //		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
 //		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
 		inverseMotors(false);
-		m_drive.arcadeDrive(moveValue, -1 * rotateValue, SENSITIVITY);
+		m_drive.arcadeDrive(NORMALSPEED*moveValue,NORMALSPEED* -1 * rotateValue, SENSITIVITY);
 	}
 	
 	/**
@@ -358,7 +359,7 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 //		RobotMap.moteurDeplacementArriereDroite.setInverted(true);
 		inverseMotors(true);
 		//m_drive.arcadeDrive(SLOWSPEED*moveValue, SLOWSPEED*rotateValue, SENSITIVITY);
-		m_drive.tankDrive(leftStick, rightStick, SENSITIVITY);
+		m_drive.tankDrive(NORMALSPEED*leftStick, NORMALSPEED*rightStick, SENSITIVITY);
 	}
 	
 	/**
@@ -380,7 +381,7 @@ public class RbtxDeplacementSubsystem extends PIDSubsystem {
 //		RobotMap.moteurDeplacementAvantDroite.setInverted(false);
 //		RobotMap.moteurDeplacementArriereDroite.setInverted(false);
 		inverseMotors(false);
-		m_drive.tankDrive(rightStick, leftStick, SENSITIVITY);
+		m_drive.tankDrive(NORMALSPEED*rightStick, NORMALSPEED*leftStick, SENSITIVITY);
 	}
 	
 	/**

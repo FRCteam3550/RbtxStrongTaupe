@@ -85,7 +85,7 @@ public class RbtxDriveToDistanceWithEncoders extends Command {
 		encoderPID.reset();
 		encoderPID.enable();
 		encoderPID.setSetpoint(distance);
-		setTimeout(5);
+		setTimeout(3);
 	}
 
 	protected void execute() {
